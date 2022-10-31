@@ -1,50 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bem-vindo(a) ao HurriGames</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Bem-Vindo(a) ao HurriGames</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #badffa;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../img/logo3.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Iniciar sessão</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ofertas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sobre</a>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Suporte</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../img/fortnite.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Fortnite™ - O último que ficar de pé vence.</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis, alias, in doloremque est incidunt iusto facere quae veniam cupiditate, at dolor? Deserunt dolorum temporibus itaque impedit tempora reiciendis at!</p>
+            <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../img/castlevania.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Castlevania™ - Morra agora, e deixe este mundo! Você nunca pertencerá aqui!.</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis, alias, in doloremque est incidunt iusto facere quae veniam cupiditate, at dolor? Deserunt dolorum temporibus itaque impedit tempora reiciendis at!</p>
+            <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../img/cod.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Call of Duty™ - Na guerra, ninguém luta sozinho.</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis, alias, in doloremque est incidunt iusto facere quae veniam cupiditate, at dolor? Deserunt dolorum temporibus itaque impedit tempora reiciendis at!</p>
+            <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p></p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
+
+    <div class="sign-up">
+      <div class="colun-b">
+        <section class="Form my-5 mx-5">
+          <div class="container">
+            <div class="row no-gutters">
+              <div class="col-lg-5">
+                  <img class="image" src="../img/comunidade.jpg" alt="">
+              </div>
+              <div class="col-lg-7 px-5 pt-5">
+                
+                <h1 class="font-weight-bold py-3">Sign-up</h1>
+                <h4>Cadastre uma nova conta</h4>
+
+                <form action="">
+                  <div class="form-row"></div>
+                  
+                  <div class="col-lgl-7">
+                    <input type="firstName" placeholder="Nome completo" class="form-control my-2 p-3">
+                  </div>
+
+                  <div class="form-row"></div>
+                  <div class="col-lgl-7">
+                    <label for="data">Data de Nascimento:</label>
+                    <input type="date" id="data" name="birthday" class="my-2 p-1">
+                  </div>
+
+                  <div class="form-row"></div>
+                  <div class="col-lgl-7">
+                    <input type="email" placeholder="Digite seu e-mail..." class="form-control my-2 p-3">
+                  </div>
+
+                  <div class="form-row"></div>
+                  <div class="col-lgl-7">
+                    <input type="password" placeholder="Digite sua senha..." class="form-control my-2 p-3">
+                  </div>
+
+                  <div class="form-row"></div>
+                  <div class="col-lgl-7">
+                    <button type="button" class="btn1">Sign-up</button>
+                  </div>
+                  <p class="my-3 py-2">Já possui conta no Google? Então cadastre-se com ela:</p>
+                  <div class="form-row"></div>
+                  <div class="col-lgl-7">
+                    <button type="button" class="btn2">
+                      <img class="teste" src="../img/logoX.jpg" alt="">
+                      Sign-up com Google</button>
+                  <p class="my-3 py-2">Eu aceito os  <a href="">termos de serviço</a> e concordo com a <a href="">política de privacidade</a>.</p>    
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</body>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    
+  </body>
 </html>
+
