@@ -6,7 +6,7 @@ body{
 }
 
 .main{
-    width: 100vw;
+    width: 99vw;
     height: 100vh;
     background-color: #132150;
     display: flex;
@@ -98,4 +98,8 @@ body{
     background-color: #04d9bd;
     cursor: pointer;
     box-shadow: 0px 8px 30px -12px #023831;
+}
+
+footer{
+    width: 99vw;
 }
