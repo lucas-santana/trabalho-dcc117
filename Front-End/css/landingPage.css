@@ -31,7 +31,7 @@ body{
     padding: 100px;
 }
 
-.carrusel-item{
+.carousel-item{
     height: 100vh;
     min-height: 300px;
 }
@@ -39,6 +39,7 @@ body{
 .carousel-caption{
     bottom: 200px;
     z-index: 2;
+    pointer-events: absolute;
 }
 
 .carousel-caption h5{
