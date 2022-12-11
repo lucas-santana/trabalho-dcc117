@@ -86,7 +86,7 @@ nav.open .sidebar{
     color: #fff;
 }
 
-#categoryPanel{
+#adminPanel{
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
@@ -140,151 +140,119 @@ nav.open ~ .overlay{
     height: 100%;
     right: 0;
     padding: 70px 0px 0px 87px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #b0c0ec;
 }
 
 footer{
     height: 40px;
 }
 
-.main--content {
+.container header{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    position: relative;
+}
+
+.container form{
+    position: relative;
+    min-height: 450px;
+    background-color: #fff;
+    margin-top: 15px;
+}
+
+.container header::before{
+    border-radius: 8px;
+    content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: calc(100% - 300px);
-    padding: 0 40px;
-    overflow-y: scroll;
-    transition: .3s;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    background-color: #4070f4;
+    left: 0;
 }
 
-.main--content.active {
-    width: calc(100% - 103px);
-}
-
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    margin-top: 30px;
-}
-
-.cards {
-    display: flex;
-    gap: 20px;
-    padding-top: 100px;
-}
-
-.card {
-    padding: 20px;
-    border-radius: 20px;
-    min-width: 230px;
-    height: auto;
-    transition: .3s;
-}
-
-.card:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card--data {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.card h1 {
-    font-size: 30px;
-    margin-top: 10px;
-}
-
-.card--icon--lg {
-    font-size: 80px;
-}
-
-.card--stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.card--stats span {
-    display: flex;
-    align-items: center;
-}
-
-.card--icon {
-    margin-right: 5px;
-}
-
-.tabelaUsuarios{
-    margin-top: 40px;
-}
-
-.listaUsuarios{
+.container{
+    background-color: #fff;
+    position: relative;
+    max-width: 900px;
     width: 100%;
-    padding: 10px;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container form .content{
     margin-top: 10px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
 }
 
-.table{
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 15px;
-    min-width: 100%;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
+.title{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
 }
 
-.listaUsuarios h1{
-    padding-bottom: 8px;
-}
-
-table thead tr{
-    color: #fff;
-    background: rgb(235, 150, 220);
-    text-align: left;
-    font-weight: bold;
-}
-
-.table th, .table td{
-    padding: 12px 15px;
-}
-
-.table tbody tr{
-    border-bottom: 1px solid #ddd;
-}
-
-tbody tr:hover {
-    background-color: rgba(50,98,149,.3);
-}
-
-.table tbody tr:nth-of-type(embed){
-    background: #f3f3f3;
-}
-
-.table tbody tr.active{
-    font-weight: bold;
-    color: rgb(235, 150, 220);
-}
-
-.table tbody tr:last-of-type{
-    border-bottom: 2px solid rgb(235, 150, 220);
-}
-
-.table tbody tr td i{
-    cursor: pointer;
-}
-
-.but1{
-    background-color: rgb(13, 98, 224);
+.content form .user-details{
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    
+    margin: 20px 0 12px 0;
+  }
+
+form .user-details .input-box{
+    display: flex;
+    flex-direction: column;
+    margin: 4px 10px;
+    width: calc(100%  / 3 - 15px);
+}
+
+.input-box input{
+    padding: 0 6px;
+    border-radius: 5px; 
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    height: 35px;
+    outline: none;
+    border: 1px solid #aaa;
+    margin: 8px 0;
+}
+
+.input-box span{
+    font-size: 16px;
+    font-weight: 500;
+    color: #2e2e2e;
+    margin: 8px 0;
+}
+
+.input-box input:is(:focus, :valid){
+    box-shadow: 1px 3px 6px rgba(0,0,0,0.2);
+}
+
+.input-box input[type="date"]{
+    color: #707070;
+}
+
+
+.input-box input[type="date"]:valid{
+    color: #333;
+}
+
+.container form button{
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    /* background-color: #4070f4; */
+    width: 100%;
     border: none;
     outline: none;
     color: #fff;
@@ -295,6 +263,36 @@ tbody tr:hover {
     cursor: pointer;
 }
 
-i{
-    margin: 0 1px;
+.botoes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+
+.but1{
+    background-color: rgb(6, 212, 6);
+}
+
+.but2{
+    background-color: rgb(231, 55, 55);
+}
+
+.button1{
+    padding: 10px;
+}
+
+.button2{
+    padding: 10px;
+}
+
+form button i{
+    margin: 0 3px;
+}
+
+form .but1:hover{
+    background-color: rgb(3, 172, 3);
+}
+
+form .but2:hover{
+    background-color: rgb(233, 73, 73);
 }
