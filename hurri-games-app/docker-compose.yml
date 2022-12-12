@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+    app:
+        image: 'imagem_app'
+        container_name: container_app
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+            args:
+                user: userdev
+                uid: 1000
+        ports:
+            - 8080:80
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+    db:
+        image: mysql:5.7
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: 'hurri_db'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MYSQL_ROOT_PASSWORD: ""
+        volumes:
+            - ./db:/var/lib/mysql
