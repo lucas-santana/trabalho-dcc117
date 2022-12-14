@@ -75,5 +75,6 @@
         </section>
     </div>
 
+    <script src="{{asset("js/rolada.js")}}"></script>
 
 @endsection

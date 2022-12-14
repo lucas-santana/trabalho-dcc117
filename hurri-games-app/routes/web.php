@@ -22,6 +22,14 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     });
 
+    Route::get('/users/bloquear', function () {
+        return view('users.banir');
+    })->name('users.block');
+
+    Route::get('/users/message', function () {
+        return view('users.notification');
+    })->name('users.notificacao');
+
     Route::get('/home', function () {
         return view('home');
     })->name('home');

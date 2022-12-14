@@ -82,11 +82,14 @@
 
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class='bx bx-trash'></button>
+                                    <i class='bx bx-trash'><button type="submit"></button></i>
 
 
-                                    <i class='bx bx-block'></i>
-                                    <i class='bx bx-message'></i>
+                                    <a class='bx bx-block' href="{{ route('users.block', $user->id) }}"></a>
+
+
+                                    <a class='bx bx-message' href="{{ route('users.notificacao', $user->id) }}"></a>
+
 
                                 </form>
 

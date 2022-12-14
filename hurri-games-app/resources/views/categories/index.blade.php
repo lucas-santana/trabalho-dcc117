@@ -73,8 +73,8 @@
                     </tbody>
                 </table>
                 <button class="but1">
-                    <a class='uil uil-plus' href="{{ route('categories.create') }}">Cadastrar Categoria</a>
-                    {{--<span><i class="uil uil-plus"></i>Cadastrar Categoria</span>--}}
+
+                    <span><i class="uil uil-plus"><a class='uil uil-plus' href="{{ route('categories.create') }}"></a></i>Cadastrar Categoria</span>
                 </button>
             </div>
         </section>
