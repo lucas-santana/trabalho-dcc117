@@ -10,22 +10,23 @@
     <div class="container">
         <div class="title">Cadastrar Categoria</div>
         <div class="content">
-            <form action="#">
+            <form action="{{route('categories.store')}}" method="POST">
+                @csrf
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Nome da Categoria</span>
-                        <input type="text" placeholder="Digite o nome..." >
+                        <input name="name" type="text" placeholder="Digite o nome..." >
                     </div>
 
                     <div class="input-box">
                         <span class="details">Descrição</span>
-                        <input type="text" placeholder="Informe uma breve descrição..." >
+                        <input name="description" type="text" placeholder="Informe uma breve descrição..." >
                     </div>
 
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input name="is_active" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Ativa
                     </label>

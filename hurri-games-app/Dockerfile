@@ -11,8 +11,11 @@ MAINTAINER Lucas Santana<lucasg4x@gmail.com>
 ARG user
 ARG uid
 
+RUN apt-get update
+
  #libxrender1 e libfontconfig1 são para o wkhtmltopdf funcionar
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
+        libpq-dev \
         libpng-dev \
         git \
         nano \
@@ -24,17 +27,18 @@ RUN apt-get update && apt-get install -y \
         zip \
         curl \
         unzip \
-        libxrender1 \
-        libfontconfig1 \
+#        libxrender1 \
+#        libfontconfig1 \
         wget \
-        cron \
+#        cron \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo \
     && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install zip \
     && docker-php-ext-install mbstring \
-    && docker-php-ext-install pdo \
     && docker-php-source delete
 
 

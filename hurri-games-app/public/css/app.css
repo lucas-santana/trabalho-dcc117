@@ -211,3 +211,29 @@ footer{
 tbody tr:hover {
     background-color: rgba(50,98,149,.3);
 }
+
+a.btnDefault {
+    background-color: rgb(13, 98, 224);
+    justify-content: end;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 30px 0;
+    padding: 10px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+a.btnDefault:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+a{
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}

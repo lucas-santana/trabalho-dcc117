@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id','asc')->get();
+        $categories = Category::orderBy('id', 'asc')->get();
         return view('categories.index')->with('categories', $categories);
     }
 
@@ -32,18 +32,26 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param \App\Http\Requests\StoreCategoryRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $dadosValidados = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'is_active' => 'boolean'
+        ]);
+
+        Category::create($dadosValidados);
+
+        return redirect()->route('categories.index')->with('success', 'Registro criado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -54,7 +62,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
@@ -65,8 +73,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
+     * @param \App\Http\Requests\UpdateCategoryRequest $request
+     * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCategoryRequest $request, Category $category)
@@ -77,11 +85,13 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success','Registro excluído com sucesso!');
     }
 }

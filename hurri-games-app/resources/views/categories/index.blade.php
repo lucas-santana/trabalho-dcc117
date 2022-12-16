@@ -47,7 +47,9 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome da Categoria</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Ativa</th>
                         <th>Total de Jogos Associados</th>
                         <th>Avaliação Média</th>
 
@@ -59,12 +61,18 @@
                         <tr>
                             <td>{{$category->id}}</td>
                             <td>{{$category->name}}</td>
+                            <td>{{$category->description}}</td>
+                            <td>{{$category->is_active?'Sim':'Não'}}</td>
                             <td>6</td>
                             <td>2.5</td>
 
                             <td>
-                                <a class='bx bxs-edit-alt' href="{{ route('categories.edit', $category->id) }}"></a>
-                                <abbr title="Deletar"><i class='bx bx-trash'></i></abbr>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                    <a class='bx bxs-edit-alt' href="{{ route('categories.edit', $category->id) }}"></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"><i class='bx bx-trash'></i></button>
+                                </form>
 
                             </td>
                         </tr>
@@ -72,11 +80,15 @@
 
                     </tbody>
                 </table>
-                <button class="but1">
-
-                    <span><i class="uil uil-plus"><a class='uil uil-plus' href="{{ route('categories.create') }}"></a></i>Cadastrar Categoria</span>
-                </button>
+                <a class="btnDefault" href="{{ route('categories.create') }}">
+                    <span>Cadastrar</span>&nbsp;
+                    <i class="uil uil-edit"></i>
+                </a>
             </div>
         </section>
     </div>
+    <script type="text/javascript">
+
+
+    </script>
 @endsection
