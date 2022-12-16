@@ -9,15 +9,7 @@
 @section('body')
     <div class="container">
         <div class="title">Editar dados do usuário</div>
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <x-message/>
         <div class="content">
             <form action="{{ route('users.update', $user->id) }}" method="POST">
                 @csrf
@@ -64,7 +56,7 @@
                 <div class="botoes">
                     <div class="button1">
                         <button type="submit" class="but1">
-                            <span>Editar</span>
+                            <span>Atualizar</span>
                             <i class="uil uil-edit"></i>
                         </button>
                     </div>

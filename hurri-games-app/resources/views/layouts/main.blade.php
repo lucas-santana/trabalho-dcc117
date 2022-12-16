@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- CSS only -->
+        {{--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">--}}
+
     <link rel="shortcut icon" href="{{asset('img/favicon1.png')}}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -26,6 +30,12 @@
 
             @yield('body')
 
+            <script src="{{asset('js/sweetalert2_11.js')}}"></script>
+            <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+                    integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
             <script>
                 const navBar = document.querySelector("nav"),
                     menuBtns = document.querySelectorAll(".menu-icon"),
@@ -43,9 +53,9 @@
 
             </script>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-                    crossorigin="anonymous"></script>
+            @yield('scripts')
+            @include('scripts.deleteConfirmation')
+
         </div>
     </div>
 

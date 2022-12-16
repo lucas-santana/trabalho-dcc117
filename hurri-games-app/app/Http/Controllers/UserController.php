@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Session;
 
 class UserController extends Controller
 {
@@ -78,7 +79,13 @@ class UserController extends Controller
 
         $user->update($dadosValidados);
 
-        return redirect()->route('users.index')->with('success','Usuário atualizado com sucesso!');
+        if(!$user->wasChanged()){
+            Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
+        }else{
+            Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -90,7 +97,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-
-        return redirect()->route('users.index')->with('success','Registro excluído com sucesso!');
+        Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+        return redirect()->route('users.index');
     }
 }

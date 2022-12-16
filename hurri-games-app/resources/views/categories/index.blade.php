@@ -43,6 +43,7 @@
         <section class="tabelaUsuarios">
             <div class="listaUsuarios">
                 <h1>Categorias do Sistema</h1>
+                <x-message/>
                 <table class="table">
                     <thead>
                     <tr>
@@ -68,10 +69,12 @@
 
                             <td>
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                                    <a class='bx bxs-edit-alt' href="{{ route('categories.edit', $category->id) }}"></a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"><i class='bx bx-trash'></i></button>
+
+                                    <a class='bx bxs-edit-alt' href="{{ route('categories.edit', $category->id) }}"></a>
+
+                                    @include('components.btnDelete')
                                 </form>
 
                             </td>
@@ -81,8 +84,8 @@
                     </tbody>
                 </table>
                 <a class="btnDefault" href="{{ route('categories.create') }}">
+                    <i class="uil uil-plus"></i>
                     <span>Cadastrar</span>&nbsp;
-                    <i class="uil uil-edit"></i>
                 </a>
             </div>
         </section>

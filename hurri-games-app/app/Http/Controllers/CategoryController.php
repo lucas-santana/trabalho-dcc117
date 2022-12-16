@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -67,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -79,7 +80,24 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $dadosValidados = $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $dadosValidados['is_active'] = $request->has('is_active') ? 1 : 0;
+
+        $category->update($dadosValidados);
+
+        if(!$category->wasChanged()){
+            Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
+        }else{
+            Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
+        }
+
+
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -91,7 +109,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-
-        return redirect()->route('categories.index')->with('success','Registro excluído com sucesso!');
+        Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+        return redirect()->route('categories.index');
     }
 }

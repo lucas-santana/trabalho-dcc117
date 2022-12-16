@@ -5,7 +5,26 @@
 @push('css')
     <link rel="stylesheet" href="{{asset('css/users.css')}}">
 @endpush
+<script type="text/javascript">
 
+    $('.show_confirm').click(function (event) {
+        var form = $(this).closest("form");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+
+</script>
 @section('body')
     <div class="main--content">
         <div class="overview">
@@ -52,11 +71,7 @@
         <section class="tabelaUsuarios">
             <div class="listaUsuarios">
                 <h1>Usuários do Sistema</h1>
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success fade show" role="alert">
-                        {{$message}}
-                    </div>
-                @endif
+                <x-message/>
                 <table class="table">
                     <thead>
                     <tr>
@@ -77,13 +92,13 @@
                             <td>1023</td>
                             <td>{{$user->created_at->format('d/m/Y H:i:s')}}</td>
                             <td>
-                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                    <a class='bx bxs-edit-alt' href="{{ route('users.edit', $user->id) }}"></a>
-
+                                <form action="{{ route('users.destroy', 0) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <i class='bx bx-trash'><button type="submit"></button></i>
 
+                                    <a class='bx bxs-edit-alt' href="{{ route('users.edit', $user->id) }}"></a>
+
+                                    @include('components.btnDelete')
 
                                     <a class='bx bx-block' href="{{ route('users.block', $user->id) }}"></a>
 
