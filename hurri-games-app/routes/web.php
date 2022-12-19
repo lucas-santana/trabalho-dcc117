@@ -22,19 +22,18 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     });
 
-    Route::get('/users/bloquear', function () {
-        return view('users.banir');
-    })->name('users.block');
-
-    Route::get('/users/message', function () {
-        return view('users.notification');
-    })->name('users.notificacao');
-
     Route::get('/home', function () {
         return view('home');
     })->name('home');
 
     Route::resource('users', UserController::class);
+    Route::get('/users/bloquear/{user}', [UserController::class, 'banForm'])->name('users.banForm');
+    Route::post('/users/bloquear/{user}', [UserController::class, 'ban'])->name('users.ban');
+    Route::get('/users/message', function () {
+        return view('users.notification');
+    })->name('users.notificacao');
+
+
     Route::resource('categories', CategoryController::class);
 
     Route::get('/games', function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Session;
 
 class UserController extends Controller
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id','asc')->get();
+        $users = User::orderBy('id', 'asc')->get();
         return view('users.index')->with('users', $users);
     }
 
@@ -59,7 +60,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit')->with('user',$user);
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -74,14 +75,20 @@ class UserController extends Controller
         $dadosValidados = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'bithDate' => 'required',
+            'birth_date' => 'required',
+            'nick_name' => 'string',
+            'status' => 'boolean'
         ]);
 
+
+        $dadosValidados['status'] = $request->has('status') ? 1 : 0;
+
+        //dd($dadosValidados);
         $user->update($dadosValidados);
 
-        if(!$user->wasChanged()){
+        if (!$user->wasChanged()) {
             Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
-        }else{
+        } else {
             Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
         }
 
@@ -98,6 +105,51 @@ class UserController extends Controller
     {
         $user->delete();
         Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+        return redirect()->route('users.index');
+    }
+
+    public function banForm(User $user)
+    {
+        if($user->status == 0){
+            Session::flash('warning', ['msg' => __('messages.usuario_ja_banido')]);
+            return redirect()->route('users.index');
+        }
+        return view('users.banir')->with('user', $user);
+    }
+
+    public function ban(Request $request, User $user){
+        $dadosValidados = $request->validate([
+            'ban_time' => 'required',
+            'ban_reason' => 'required'
+        ]);
+
+
+        //dd($dadosValidados['ban_time']);
+        switch ($dadosValidados['ban_time']){
+            case "3H":
+                $user->banned_until = Carbon::now()->addHours(3);
+                break;
+            case "6H":
+                $user->banned_until = Carbon::now()->addHours(6);
+                break;
+            case "1D":
+                $user->banned_until = Carbon::now()->addDay();
+                break;
+            case "1S":
+                $user->banned_until = Carbon::now()->addWeek();
+                break;
+            default:
+                return back()->withErrors('msg','Data invalidad');
+        }
+
+
+        $user->ban_reason = $dadosValidados['ban_reason'];
+        $user->banned_at = Carbon::now();
+        $user->status = 0;
+
+        $user->update($dadosValidados);
+
+        Session::flash('success', ['msg' => __('messages.usuario_banido')]);
         return redirect()->route('users.index');
     }
 }

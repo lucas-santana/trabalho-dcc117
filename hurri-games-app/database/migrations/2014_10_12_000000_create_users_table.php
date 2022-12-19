@@ -20,6 +20,11 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->boolean('status')->default(true);
             $table->string('email')->unique();
+
+            $table->timestamp('banned_at')->nullable();
+            $table->timestamp('banned_until')->nullable();
+            $table->string('ban_reason')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

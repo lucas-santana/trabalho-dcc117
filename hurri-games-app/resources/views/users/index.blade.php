@@ -78,6 +78,7 @@
                         <th>ID</th>
                         <th>Nome</th>
                         <th>E-mail</th>
+                        <th>Ativo</th>
                         <th>Número de Pontos</th>
                         <th>Data de Entrada</th>
                         <th>Ações</th>
@@ -89,6 +90,7 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{$user->status?'Sim':'Não'}}</td>
                             <td>1023</td>
                             <td>{{$user->created_at->format('d/m/Y H:i:s')}}</td>
                             <td>
@@ -100,8 +102,7 @@
 
                                     @include('components.btnDelete')
 
-                                    <a class='bx bx-block' href="{{ route('users.block', $user->id) }}"></a>
-
+                                    <a class='bx bx-block' href="{{ route('users.banForm', $user->id) }}"></a>
 
                                     <a class='bx bx-message' href="{{ route('users.notificacao', $user->id) }}"></a>
 
