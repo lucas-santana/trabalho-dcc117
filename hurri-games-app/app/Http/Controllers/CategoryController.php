@@ -45,8 +45,9 @@ class CategoryController extends Controller
         ]);
 
         Category::create($dadosValidados);
+        Session::flash('success', ['msg' => __('messages.sucesso_cadastro')]);
 
-        return redirect()->route('categories.index')->with('success', 'Registro criado com sucesso!');
+        return redirect()->route('categories.index');
     }
 
     /**

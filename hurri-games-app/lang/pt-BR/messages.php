@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'sucesso_cadastro' => 'Registro criado com sucesso!',
     'sucesso_exclusao' => 'Informação excluída com sucesso!',
     'sucesso_atualizacao' => 'Atualização realizada com sucesso!',
 

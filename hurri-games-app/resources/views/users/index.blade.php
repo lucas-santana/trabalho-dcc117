@@ -92,7 +92,7 @@
                             <td>1023</td>
                             <td>{{$user->created_at->format('d/m/Y H:i:s')}}</td>
                             <td>
-                                <form action="{{ route('users.destroy', 0) }}" method="POST">
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
