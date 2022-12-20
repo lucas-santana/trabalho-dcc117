@@ -72,7 +72,8 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <a class='bx bxs-edit-alt' href="{{ route('categories.edit', $category->id) }}"></a>
+                                    <a class='bx bxs-edit-alt'
+                                       href="{{ route('categories.edit', $category->id) }}"></a>
 
                                     @include('components.btnDelete')
                                 </form>
@@ -87,6 +88,7 @@
                     <i class="uil uil-plus"></i>
                     <span>Cadastrar</span>&nbsp;
                 </a>
+
             </div>
         </section>
     </div>

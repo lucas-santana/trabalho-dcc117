@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('released_at');
             $table->decimal('normal_price');
-            $table->decimal('promotional_price');
+            $table->decimal('promotional_price')->nullable();
             $table->json('languages');
             $table->string('operational_system');
             $table->string('processor');

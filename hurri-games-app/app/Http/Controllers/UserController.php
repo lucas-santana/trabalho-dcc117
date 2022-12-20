@@ -82,6 +82,11 @@ class UserController extends Controller
 
 
         $dadosValidados['status'] = $request->has('status') ? 1 : 0;
+        if ($dadosValidados['status'] == 1) {
+            //$user->banned_at = NULL;
+            $user->banned_until = NULL;
+            //$user->ban_reason = NULL;
+        }
 
         //dd($dadosValidados);
         $user->update($dadosValidados);
@@ -110,14 +115,15 @@ class UserController extends Controller
 
     public function banForm(User $user)
     {
-        if($user->status == 0){
+        if ($user->status == 0) {
             Session::flash('warning', ['msg' => __('messages.usuario_ja_banido')]);
             return redirect()->route('users.index');
         }
         return view('users.banir')->with('user', $user);
     }
 
-    public function ban(Request $request, User $user){
+    public function ban(Request $request, User $user)
+    {
         $dadosValidados = $request->validate([
             'ban_time' => 'required',
             'ban_reason' => 'required'
@@ -125,7 +131,7 @@ class UserController extends Controller
 
 
         //dd($dadosValidados['ban_time']);
-        switch ($dadosValidados['ban_time']){
+        switch ($dadosValidados['ban_time']) {
             case "3H":
                 $user->banned_until = Carbon::now()->addHours(3);
                 break;
@@ -139,7 +145,7 @@ class UserController extends Controller
                 $user->banned_until = Carbon::now()->addWeek();
                 break;
             default:
-                return back()->withErrors('msg','Data invalidad');
+                return redirect()->back()->withErrors(['token' => __('messages.tempo_banimento_invalido')]);
         }
 
 
