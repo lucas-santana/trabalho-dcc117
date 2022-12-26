@@ -104,7 +104,7 @@
 
                                     <a class='bx bx-block' href="{{ route('users.banForm', $user->id) }}"></a>
 
-                                    <a class='bx bx-message' href="{{ route('users.notificacao', $user->id) }}"></a>
+                                    <a class='bx bx-message' href="{{ route('users.notify', $user->id) }}"></a>
 
 
                                 </form>

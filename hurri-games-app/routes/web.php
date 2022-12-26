@@ -26,12 +26,19 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     })->name('home');
 
+    Route::get('/store', function () {
+        return view('games.store');
+    })->name('store');
+
+    Route::get('/library', function () {
+        return view('games.library');
+    })->name('library');
+
     Route::resource('users', UserController::class);
     Route::get('/users/bloquear/{user}', [UserController::class, 'banForm'])->name('users.banForm');
     Route::post('/users/bloquear/{user}', [UserController::class, 'ban'])->name('users.ban');
-    Route::get('/users/message', function () {
-        return view('users.notification');
-    })->name('users.notificacao');
+
+    Route::get('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
 
 
     Route::resource('categories', CategoryController::class);

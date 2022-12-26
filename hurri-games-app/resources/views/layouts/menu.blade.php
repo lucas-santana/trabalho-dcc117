@@ -26,13 +26,13 @@
                         </a>
                     </li>
                     <li class="list">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('library')}}" class="nav-link">
                             <i class='bx bx-library icon'></i>
                             <span class="link">Biblioteca</span>
                         </a>
                     </li>
                     <li class="list">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('store')}}" class="nav-link">
                             <i class='bx bxs-store icon'></i>
                             <span class="link">Loja e Promoções</span>
                         </a>
@@ -43,13 +43,7 @@
                             <span class="link">Gerenciamento de Categorias</span>
                         </a>
                     </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bxs-bell icon'></i>
-                            <span class="link">Notificações</span>
-                        </a>
-                    </li>
-                </ul>
+
 
                 <div class="bottom-content">
                     <ul>

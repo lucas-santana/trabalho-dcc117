@@ -3,14 +3,14 @@
 @section('title', 'Editar Usuário')
 
 @push('css')
-    <link rel="stylesheet" href="{{asset('css/usersEdit.css')}}">
+    <link rel="stylesheet" href="{{asset('css/editGames.css')}}">
 @endpush
 
 @section('body')
 
     <div class="pseudo-right">
         <div class="container">
-            <div class="title">Editar dados do usuário</div>
+            <div class="title">Editar dados do jogo</div>
             <x-message/>
             <div class="content">
                 <form action="{{ route('users.update', $user->id) }}" method="POST">

@@ -122,6 +122,11 @@ class UserController extends Controller
         return view('users.banir')->with('user', $user);
     }
 
+    public function notify(User $user)
+    {
+        return view('users.notification')->with('user', $user);
+    }
+
     public function ban(Request $request, User $user)
     {
         $dadosValidados = $request->validate([

@@ -6,8 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
+
 
 .container header{
     font-size: 20px;
@@ -83,10 +83,6 @@ form .user-details .input-box{
     outline: none;
     border: 1px solid #aaa;
     margin: 8px 0;
-}
-
-.right span{
-    padding: 10px;
 }
 
 .input-box span{

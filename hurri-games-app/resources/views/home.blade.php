@@ -6,6 +6,7 @@
 @endpush
 
 @section('body')
+
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
         <div class="carousel-inner">
             <div class="carousel-item active">
