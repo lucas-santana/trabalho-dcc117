@@ -51,14 +51,14 @@
                     @enderror
                 </div>
 
-                <div>
+                <div class="div_special">
                     <button class="btn-login">{{ __('Login') }}</button>
                     <button class="btn-login" onclick="window.location='{{ route('register') }}'">{{ __('Register') }}</button>
                 </div>
                 <div style="color: #f0ffff94;">
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                    <label for="remember">
+                    <label id="lembrar" for="remember">
                         {{ __('Remember Me') }}
                     </label>
                 </div>

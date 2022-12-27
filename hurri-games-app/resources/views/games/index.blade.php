@@ -90,7 +90,14 @@
                     </tr>
 
                     </tbody>
+
                 </table>
+                <a class="btnDefault" href="{{ route('registerGame') }}">
+                    <i class="uil uil-plus"></i>
+                    <span>Cadastrar Jogo</span>&nbsp;
+                </a>
             </div>
+
         </section>
+
 @endsection

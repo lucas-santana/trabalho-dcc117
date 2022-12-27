@@ -38,30 +38,14 @@
         <div class="products">
 
             <div class="card">
+                <div class="title">Minecraft</div>
                 <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
-                <div class="desc">Women</div>
-                <div class="title">Lady Sandal</div>
-
-            </div>
-
-            <div class="card">
-                <div class="img"></div>
-                <div class="desc">Women</div>
-                <div class="title">Lady Sandal</div>
-
-            </div>
-
-            <div class="card">
-                <div class="img"></div>
-                <div class="desc">Women</div>
-                <div class="title">Lady Sandal</div>
-
-            </div>
-
-            <div class="card">
-                <div class="img"></div>
-                <div class="desc">Women</div>
-                <div class="title">Lady Sandal</div>
+                <div class="desc">Jogo de Destruir Bloco</div>
+                <div class="rating">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div>
 
             </div>
 

@@ -40,6 +40,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
 
+    Route::get('statsGames', function () {
+        return view('games.statsGames');
+    })->name('statsGames');
+
+    Route::get('/registerGame', function () {
+        return view('games.registerGame');
+    })->name('registerGame');
 
     Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
 
