@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('developer_data', function (Blueprint $table) {
             $table->id();
-            $table->string('review');
-            $table->decimal('rate');
-
+            $table->foreignId('user_id')->constrained();
+            $table->string('company_name')->nullable();
+            $table->string('branch')->nullable();
+            $table->string('account')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('developer_data');
     }
 };
