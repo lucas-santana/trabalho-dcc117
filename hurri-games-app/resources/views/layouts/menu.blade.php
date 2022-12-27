@@ -13,12 +13,14 @@
                             <span id="home" class="link">Home</span>
                         </a>
                     </li>
-                    <li class="list">
-                        <a href="{{route('users.index')}}" class="nav-link">
-                            <i class='bx bxs-user-circle icon'></i>
-                            <span class="link">Gerenciamento de Usuários</span>
-                        </a>
-                    </li>
+                    @can('manage-users')
+                        <li class="list">
+                            <a href="{{route('users.index')}}" class="nav-link">
+                                <i class='bx bxs-user-circle icon'></i>
+                                <span class="link">Gerenciamento de Usuários</span>
+                            </a>
+                        </li>
+                    @endcan
                     <li class="list">
                         <a href="{{route('games')}}" class="nav-link">
                             <i class='bx bxs-game icon'></i>
@@ -37,12 +39,15 @@
                             <span class="link">Loja e Promoções</span>
                         </a>
                     </li>
-                    <li class="list">
-                        <a href="{{route('categories.index')}}" class="nav-link">
-                            <i class='bx bxs-category icon'></i>
-                            <span class="link">Gerenciamento de Categorias</span>
-                        </a>
-                    </li>
+                    @can('manage-category')
+                        <li class="list">
+                            <a href="{{route('categories.index')}}" class="nav-link">
+                                <i class='bx bxs-category icon'></i>
+                                <span class="link">Gerenciamento de Categorias</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
 
 
                 <div class="bottom-content">

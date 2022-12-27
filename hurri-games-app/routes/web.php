@@ -34,14 +34,14 @@ Route::middleware(['auth'])->group(function () {
         return view('games.library');
     })->name('library');
 
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)->middleware('can:manage-users');
     Route::get('/users/bloquear/{user}', [UserController::class, 'banForm'])->name('users.banForm');
     Route::post('/users/bloquear/{user}', [UserController::class, 'ban'])->name('users.ban');
 
     Route::get('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
 
 
-    Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
 
     Route::get('/games', function () {
         return view('games.index');

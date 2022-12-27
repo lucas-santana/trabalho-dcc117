@@ -36,7 +36,8 @@
                 </form>
 
                 <div class="img"><img src="{{asset('img/geralt.jpg')}}" alt=""></div>
-                <i class="user-name">Küvirgen</i>
+{{--                <i class="user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</i>--}}
+                <i class="user-name">{{\Illuminate\Support\Facades\Auth::user()->nick_name}}</i>
             </nav>
             <div>
                 @yield('body')
