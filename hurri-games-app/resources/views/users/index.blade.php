@@ -103,9 +103,9 @@
                                     @include('components.btnDelete')
 
                                     <a class='bx bx-block' href="{{ route('users.banForm', $user->id) }}"></a>
-
-                                    <a class='bx bx-message' href="{{ route('users.notify', $user->id) }}"></a>
-
+                                    @can('send-notifications')
+                                        <a class='bx bx-message' href="{{ route('users.notifyForm', $user->id) }}"></a>
+                                    @endcan
 
                                 </form>
 

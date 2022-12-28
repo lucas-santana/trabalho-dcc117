@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notifications;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Session;
 
@@ -12,7 +18,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return Application|Factory|View|Response
      */
     public function index()
     {
@@ -23,7 +29,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -33,8 +39,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -44,8 +50,8 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Response
      */
     public function show(User $user)
     {
@@ -55,8 +61,8 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @param User $user
+     * @return Application|Factory|View|Response
      */
     public function edit(User $user)
     {
@@ -64,47 +70,10 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        $dadosValidados = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'birth_date' => 'required',
-            'nick_name' => 'string',
-            'status' => 'boolean'
-        ]);
-
-
-        $dadosValidados['status'] = $request->has('status') ? 1 : 0;
-        if ($dadosValidados['status'] == 1) {
-            //$user->banned_at = NULL;
-            $user->banned_until = NULL;
-            //$user->ban_reason = NULL;
-        }
-
-        //dd($dadosValidados);
-        $user->update($dadosValidados);
-
-        if (!$user->wasChanged()) {
-            Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
-        } else {
-            Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
-        }
-
-        return redirect()->route('users.index');
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @param User $user
+     * @return RedirectResponse|Response
      */
     public function destroy(User $user)
     {
@@ -122,17 +91,9 @@ class UserController extends Controller
         return view('users.banir')->with('user', $user);
     }
 
-    public function notify(User $user)
-    {
-        return view('users.notification')->with('user', $user);
-    }
-
     public function ban(Request $request, User $user)
     {
-        $dadosValidados = $request->validate([
-            'ban_time' => 'required',
-            'ban_reason' => 'required'
-        ]);
+        $dadosValidados = $request->validate(['ban_time' => 'required', 'ban_reason' => 'required']);
 
 
         //dd($dadosValidados['ban_time']);
@@ -161,6 +122,61 @@ class UserController extends Controller
         $user->update($dadosValidados);
 
         Session::flash('success', ['msg' => __('messages.usuario_banido')]);
+        return redirect()->route('users.index');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param User $user
+     * @return RedirectResponse|Response
+     */
+    public function update(Request $request, User $user)
+    {
+        $dadosValidados = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'birth_date' => 'required',
+            'nick_name' => 'string',
+            'status' => 'boolean']);
+
+
+        $dadosValidados['status'] = $request->has('status') ? 1 : 0;
+        if ($dadosValidados['status'] == 1) {
+            //$user->banned_at = NULL;
+            $user->banned_until = NULL;
+            //$user->ban_reason = NULL;
+        }
+
+        //dd($dadosValidados);
+        $user->update($dadosValidados);
+
+        if (!$user->wasChanged()) {
+            Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
+        } else {
+            Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
+        }
+
+        return redirect()->route('users.index');
+    }
+
+    public function notifyForm(User $user)
+    {
+        return view('users.notification')->with('user', $user);
+    }
+
+    public function notify(Request $request, User $user)
+    {
+        $dadosValidados = $request->validate([
+            'message' => 'required'
+        ]);
+
+        $comment = new Notifications($dadosValidados);
+
+        $user->notificacoes()->save($comment);
+
+        Session::flash('success', ['msg' => "Notificação enviada com sucesso!"]);
         return redirect()->route('users.index');
     }
 }

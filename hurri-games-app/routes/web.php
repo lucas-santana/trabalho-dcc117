@@ -38,21 +38,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/bloquear/{user}', [UserController::class, 'banForm'])->name('users.banForm');
     Route::post('/users/bloquear/{user}', [UserController::class, 'ban'])->name('users.ban');
 
-    Route::get('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
-
-    Route::get('statsGames', function () {
-        return view('games.statsGames');
-    })->name('statsGames');
-
-    Route::get('/registerGame', function () {
-        return view('games.registerGame');
-    })->name('registerGame');
-
     Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
 
     Route::get('/games', function () {
         return view('games.index');
     })->name('games');
+
+    Route::get('/registerGame', function () {
+        return view('games.registerGame');
+    })->name('registerGame');
+
+    Route::get('statsGames', function () {
+        return view('games.statsGames');
+    })->name('statsGames');
+
+    Route::get('/users/notificar/{user}', [UserController::class, 'notifyForm'])->name('users.notifyForm');
+    Route::post('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
 
 });
 Auth::routes();

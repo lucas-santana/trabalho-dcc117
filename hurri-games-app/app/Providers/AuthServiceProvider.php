@@ -35,5 +35,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-category', function (User $user) {
             return $user->is_admin;
         });
+
+        Gate::define('send-notifications', function (User $user) {
+            return $user->is_admin;
+        });
     }
 }

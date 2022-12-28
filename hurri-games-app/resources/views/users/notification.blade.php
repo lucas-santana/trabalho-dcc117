@@ -13,21 +13,21 @@
             <div class="title">Notificar usuário</div>
             <x-message/>
             <div class="content">
-                <form action="{{ route('users.ban', $user->id) }}" method="POST">
+                <form action="{{ route('users.notify', $user->id) }}" method="POST">
                     @csrf
                     <div class="user-details">
 
                         <span>Usuário a ser notificado: <strong>{{$user->name}}</strong></span>
 
-                        <span>ID do Usuário: {{$user->name}}</span> <!--Recuperar o ID do usuário-->
+                        <span>ID do Usuário: {{$user->id}}</span> <!--Recuperar o ID do usuário-->
 
-                        <span>Horário que será enviado: <input type="time"></span>
+                        {{--<span>Horário que será enviado: <input type="time"></span>--}}
 
-                        <span>Data do envio: <input type="date"></span>
+                        {{--<span>Data do envio: <input type="date"></span>--}}
 
                         <div class="input-box">
                             <span class="details">Mensagem</span>
-                            <textarea name="ban_reason" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
 
 
@@ -35,7 +35,7 @@
 
                     <div class="botoes">
                         <div class="button1">
-                            <button class="but1">
+                            <button type="submit" class="but1">
                                 <span>Enviar</span>
                                 <i class="uil uil-edit"></i>
                             </button>
