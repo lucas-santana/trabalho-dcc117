@@ -39,5 +39,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('send-notifications', function (User $user) {
             return $user->is_admin;
         });
+
+        Gate::define('developer-register', function (User $user) {
+            return !$user->is_dev;//só pode registrar se não for desenvolvedor
+        });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeveloperData;
 use App\Models\Notifications;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
@@ -177,6 +178,29 @@ class UserController extends Controller
         $user->notificacoes()->save($comment);
 
         Session::flash('success', ['msg' => "Notificação enviada com sucesso!"]);
+        return redirect()->route('users.index');
+    }
+
+    public function registerDevForm(User $user)
+    {
+        return view('users.registerDev')->with('user', $user);
+    }
+
+    public function registerDev(Request $request, User $user)
+    {
+        $dadosValidados = $request->validate([
+            'company_name' => 'required',
+            'branch' => 'required',
+            'account' => 'required'
+        ]);
+
+        $developerData = new DeveloperData($dadosValidados);
+
+        $user->is_dev = true;
+        $user->save();
+        $user->developerData()->save($developerData);
+
+        Session::flash('success', ['msg' => 'Cadastro de desenvolvedor realizado!']);
         return redirect()->route('users.index');
     }
 }

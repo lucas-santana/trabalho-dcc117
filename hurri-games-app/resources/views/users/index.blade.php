@@ -106,7 +106,7 @@
                                     @can('send-notifications')
                                         <a class='bx bx-message' href="{{ route('users.notifyForm', $user->id) }}"></a>
                                     @endcan
-
+                                    <a class='bx bxs-user-circle' href="{{ route('users.viewDevData', $user->id) }}"></a>
                                 </form>
 
                             </td>

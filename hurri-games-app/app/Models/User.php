@@ -55,4 +55,9 @@ class User extends Authenticatable
         return $this->hasMany(Notifications::class);
     }
 
+    public function developerData()
+    {
+        return $this->hasOne(DeveloperData::class);
+    }
+
 }

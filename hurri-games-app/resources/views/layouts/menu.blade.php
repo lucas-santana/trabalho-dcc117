@@ -47,6 +47,14 @@
                             </a>
                         </li>
                     @endcan
+                    @can('developer-register')
+                        <li class="list">
+                            <a href="{{ route('users.registerDevForm', \Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">
+                                <i class='bx bxs-user-circle icon'></i>
+                                <span class="link">Desenvolvedor</span>
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
 
 

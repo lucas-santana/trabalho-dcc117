@@ -34,9 +34,15 @@ Route::middleware(['auth'])->group(function () {
         return view('games.library');
     })->name('library');
 
-    Route::resource('users', UserController::class)->middleware('can:manage-users');
+    Route::resource('users', UserController::class);
     Route::get('/users/bloquear/{user}', [UserController::class, 'banForm'])->name('users.banForm');
     Route::post('/users/bloquear/{user}', [UserController::class, 'ban'])->name('users.ban');
+    Route::get('/users/cadastro-dev/{user}', [UserController::class, 'registerDevForm'])->name('users.registerDevForm');
+    Route::post('/users/cadastro-dev/{user}', [UserController::class, 'registerDev'])->name('users.registerDev');
+
+    Route::get('/users/dados-desenvolvedor/{user}', function () {
+        dump("Fazer uma tela mostrando dados do desenvoledor");
+    })->name('users.viewDevData');
 
     Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
 
