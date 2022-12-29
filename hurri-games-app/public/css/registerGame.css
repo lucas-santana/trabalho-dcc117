@@ -16,6 +16,10 @@
     position: relative;
 }
 
+select{
+    width: 35vw;
+}
+
 .container form{
     position: relative;
     min-height: 450px;
@@ -161,6 +165,3 @@ form .but2:hover{
     width: 60%;
 }
 
-a{
-
-}

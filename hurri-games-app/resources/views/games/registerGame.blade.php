@@ -14,7 +14,7 @@
             <div class="title">Dados Básicos</div>
             <div class="content">
                 <form action="#" method="GET">
-                    @csrf
+
                     <div class="user-details">
                         <div class="input-box">
                             <span class="details">Nome do Título</span>
@@ -110,7 +110,7 @@
 
                         <a href="{{route('statsGames')}}">
                             <div class="button1">
-                                <button class="but1">
+                                <button type="button" class="but1">
                                     <span>Avançar</span>
                                     <i class="uil uil-edit"></i>
                                 </button>

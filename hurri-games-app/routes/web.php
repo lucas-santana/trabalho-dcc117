@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users/cadastro-dev/{user}', [UserController::class, 'registerDev'])->name('users.registerDev');
 
     Route::get('/users/dados-desenvolvedor/{user}', function () {
-        dump("Fazer uma tela mostrando dados do desenvoledor");
+        return view('users.viewDevData');
     })->name('users.viewDevData');
 
     Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
@@ -49,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/games', function () {
         return view('games.index');
     })->name('games');
+
+    Route::get('/receiveMessage', function () {
+        return view('layouts.receiveMessage');
+    })->name('receiveMessage');
 
     Route::get('/registerGame', function () {
         return view('games.registerGame');

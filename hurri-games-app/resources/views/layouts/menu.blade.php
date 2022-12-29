@@ -47,6 +47,12 @@
                             </a>
                         </li>
                     @endcan
+                    <li class="list">
+                        <a href="{{route('receiveMessage')}}" class="nav-link">
+                            <i class='bx bxs-bell icon'></i>
+                            <span class="link">Notificações <i class='bx bxs-circle'></i></span>
+                        </a>
+                    </li>
                     @can('developer-register')
                         <li class="list">
                             <a href="{{ route('users.registerDevForm', \Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">

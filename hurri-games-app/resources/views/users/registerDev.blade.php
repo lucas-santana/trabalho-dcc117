@@ -4,7 +4,7 @@
 
 @push('css')
 
-    <link rel="stylesheet" href="{{asset('css/notification.css')}}">
+    <link rel="stylesheet" href="{{asset('css/usersEdit.css')}}">
 @endpush
 
 @section('body')
@@ -22,13 +22,21 @@
                         </div>
 
                         <div class="input-box">
-                            <span class="details">Agencia</span>
+                            <span class="details">Agência</span>
                             <input name="branch" class="form-control"  type="text"/>
                         </div>
 
                         <div class="input-box">
                             <span class="details">Conta</span>
                             <input name="account" class="form-control" type="text"/>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Concordo com o compartilhamento dos meus dados seguindo a <a class="ancora" href="">Política de Privacidade</a> do site.
+                            </label>
                         </div>
                     </div>
 

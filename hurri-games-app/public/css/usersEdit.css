@@ -50,7 +50,7 @@
 }
 
 .title{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
     margin: 6px 0;
     color: #333;
@@ -90,7 +90,6 @@ form .user-details .input-box{
     font-weight: 500;
     color: #2e2e2e;
     margin: 8px 0;
-    display: inline-grid;
 }
 
 .input-box input:is(:focus, :valid){
@@ -133,8 +132,12 @@ form .user-details .input-box{
     background-color: rgb(6, 212, 6);
 }
 
+.but3{
+    background-color: indianred;
+}
+
 .but2{
-    background-color: rgb(231, 55, 55);
+    background-color: rgb(239, 78, 147);
 }
 
 .button1{
@@ -142,6 +145,10 @@ form .user-details .input-box{
 }
 
 .button2{
+    padding: 10px;
+}
+
+.button3{
     padding: 10px;
 }
 
@@ -156,3 +163,16 @@ form .but1:hover{
 form .but2:hover{
     background-color: rgb(233, 73, 73);
 }
+
+.form-check{
+    padding-top: 20px;
+}
+
+.ancora{
+    color: royalblue;
+}
+
+.ancora:hover{
+    color: darkblue;
+}
+
