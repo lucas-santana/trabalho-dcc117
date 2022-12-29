@@ -165,3 +165,13 @@ form .but2:hover{
     width: 60%;
 }
 
+.categorias{
+    display: flex;
+    flex-direction:row;
+}
+
+.idiomas{
+    display: flex;
+    flex-direction:row;
+}
+

@@ -22,7 +22,7 @@
                         </li>
                     @endcan
                     <li class="list">
-                        <a href="{{route('games')}}" class="nav-link">
+                        <a href="{{route('games.index')}}" class="nav-link">
                             <i class='bx bxs-game icon'></i>
                             <span class="link">Gerenciamento de Jogos</span>
                         </a>

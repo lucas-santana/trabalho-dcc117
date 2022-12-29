@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
         return view('games.library');
     })->name('library');
 
+    Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
+
+    /*------------------- USUARIO -------------------------------------------------*/
     Route::resource('users', UserController::class);
     Route::get('/users/bloquear/{user}', [UserController::class, 'banForm'])->name('users.banForm');
     Route::post('/users/bloquear/{user}', [UserController::class, 'ban'])->name('users.ban');
@@ -44,23 +48,18 @@ Route::middleware(['auth'])->group(function () {
         return view('users.viewDevData');
     })->name('users.viewDevData');
 
-    Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
+    /*------------------- JOGOS -------------------------------------------------*/
+    Route::get('/games', [GameController::class,'index'])->name('games.index');
 
-    Route::get('/games', function () {
-        return view('games.index');
-    })->name('games');
+    Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
+    Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');
+
+    Route::get('/games/create-step-2', [GameController::class,'createStep2'])->name('games.createStep2');
+    Route::post('/games/create-step-2', [GameController::class,'storeStep2'])->name('games.storeStep2');
 
     Route::get('/receiveMessage', function () {
         return view('layouts.receiveMessage');
     })->name('receiveMessage');
-
-    Route::get('/registerGame', function () {
-        return view('games.registerGame');
-    })->name('registerGame');
-
-    Route::get('statsGames', function () {
-        return view('games.statsGames');
-    })->name('statsGames');
 
     Route::get('/users/notificar/{user}', [UserController::class, 'notifyForm'])->name('users.notifyForm');
     Route::post('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');

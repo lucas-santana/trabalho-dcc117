@@ -45,12 +45,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //lista de desejo
     public function games()
     {
         return $this->belongsToMany(Game::class);
     }
 
-    public function notificacoes()
+    public function notifications()
     {
         return $this->hasMany(Notifications::class);
     }

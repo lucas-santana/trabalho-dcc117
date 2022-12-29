@@ -122,6 +122,11 @@ class UserController extends Controller
 
         $user->update($dadosValidados);
 
+        $notification = new Notifications();
+        $notification->message = "CE TÁ BANIDO";
+
+        $user->notifications()->save($notification);
+
         Session::flash('success', ['msg' => __('messages.usuario_banido')]);
         return redirect()->route('users.index');
     }
@@ -173,9 +178,9 @@ class UserController extends Controller
             'message' => 'required'
         ]);
 
-        $comment = new Notifications($dadosValidados);
+        $notification = new Notifications($dadosValidados);
 
-        $user->notificacoes()->save($comment);
+        $user->notifications()->save($notification);
 
         Session::flash('success', ['msg' => "Notificação enviada com sucesso!"]);
         return redirect()->route('users.index');

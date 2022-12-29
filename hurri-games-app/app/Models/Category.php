@@ -19,4 +19,12 @@ class Category extends Model
         'description',
         'is_active',
     ];
+
+    /*
+     * Uma categoria pode pertencer a vários jogos
+     */
+    public function games()
+    {
+        return $this->belongsToMany(Game::class);
+    }
 }
