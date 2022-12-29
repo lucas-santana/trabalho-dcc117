@@ -123,7 +123,7 @@ class UserController extends Controller
         $user->update($dadosValidados);
 
         $notification = new Notifications();
-        $notification->message = "CE TÁ BANIDO";
+        $notification->message = $user->ban_reason;
 
         $user->notifications()->save($notification);
 
