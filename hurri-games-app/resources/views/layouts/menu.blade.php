@@ -39,6 +39,13 @@
                             <span class="link">Loja e Promoções</span>
                         </a>
                     </li>
+                    <li class="list">
+                        <a href="{{route('wishList')}}" class="nav-link">
+                            <i class='bx bxs-shopping-bag icon'></i>
+                            <span class="link">Lista de Desejos</span>
+                        </a>
+                    </li>
+
                     @can('manage-category')
                         <li class="list">
                             <a href="{{route('categories.index')}}" class="nav-link">

@@ -39,7 +39,9 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
-                <dic class="cart"><i class="fa-solid fa-cart-shopping"></i><p>0</p></dic>
+                <a href="{{route('cart')}}">
+                    <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p>0</p></div>
+                </a>
             </div>
         </div>
 

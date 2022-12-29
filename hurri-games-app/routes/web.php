@@ -51,6 +51,14 @@ Route::middleware(['auth'])->group(function () {
     /*------------------- JOGOS -------------------------------------------------*/
     Route::get('/games', [GameController::class,'index'])->name('games.index');
 
+    Route::get('/cart', function(){
+        return view('games.cart');
+    })->name('cart');
+
+    Route::get('wishList', function(){
+        return view('games.wishList');
+    })->name('wishList');
+
     Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
     Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');
 
