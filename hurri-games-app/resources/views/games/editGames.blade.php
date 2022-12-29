@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="button2">
-                            <button class="but2">
+                            <button class="but2" type="button" onclick="window.location='{{ route('games.index') }}'">
                                 <span>Cancelar</span>
                                 <i class="uil uil-x"></i>
                             </button>

@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="button2">
-                            <button class="but2">
+                            <button type="button" class="but2" onclick="window.location='{{ route('categories.index') }}'">
                                 <span>Cancelar</span>
                                 <i class="uil uil-x"></i>
                             </button>
