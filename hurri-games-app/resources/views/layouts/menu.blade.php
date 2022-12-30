@@ -34,7 +34,7 @@
                         </a>
                     </li>
                     <li class="list">
-                        <a href="{{route('store')}}" class="nav-link">
+                        <a href="{{route('store.index')}}" class="nav-link">
                             <i class='bx bxs-store icon'></i>
                             <span class="link">Loja e Promoções</span>
                         </a>

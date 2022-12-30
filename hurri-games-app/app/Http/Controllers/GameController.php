@@ -25,7 +25,12 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::where('user_id','=',Auth::id())->get();
+        if(Auth::user()->is_admin){
+            $games = Game::all();
+        }else{
+            $games = Game::where('user_id','=', Auth::id())->get();
+        }
+
         return view('games.index')->with('games', $games);
     }
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,9 +28,14 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     })->name('home');
 
-    Route::get('/store', function () {
-        return view('games.store');
-    })->name('store');
+    Route::get('/store', [StoreController::class,'index'])->name('store.index');
+    Route::get('/store/show/{game}', [StoreController::class,'showCartProduct'])->name('store.showCartProduct');
+    Route::get('/store/cart/show', [StoreController::class,'showCart'])->name('store.showCart');
+    Route::post('/store/cart/{game}', [StoreController::class,'cart'])->name('store.cart');
+
+    Route::get('/cart', function(){
+        return view('games.cart');
+    })->name('cart');
 
     Route::get('/library', function () {
         return view('games.library');
@@ -50,10 +56,6 @@ Route::middleware(['auth'])->group(function () {
 
     /*------------------- JOGOS -------------------------------------------------*/
     Route::get('/games', [GameController::class,'index'])->name('games.index');
-
-    Route::get('/cart', function(){
-        return view('games.cart');
-    })->name('cart');
 
     Route::get('wishList', function(){
         return view('games.wishList');

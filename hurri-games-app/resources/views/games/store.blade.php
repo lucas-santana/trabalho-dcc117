@@ -14,7 +14,7 @@
 
                 <div class="dropdown">
 
-                    <select name="">
+                    <select name="categories">
                         <option value="1">Categorias</option>
                         <option value="2">Ação</option>
                         <option value="3">FPS</option>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <a href="{{route('cart')}}">
-                    <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p>0</p></div>
+                    <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p>{{$totalItensCarrinho}}</p></div>
                 </a>
             </div>
         </div>
@@ -48,22 +48,22 @@
         <section class="sec">
             <h1>Loja</h1>
             <div class="products">
-
-                <div class="card">
-                    <div class="title">Minecraft</div>
-                    <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
-                    <div class="desc">Jogo de Destruir Bloco</div>
-                    <div class="rating">
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star-half"></i>
+                @foreach($games as $game)
+                    <div class="card">
+                        <div class="title">{{$game->name}}</div>
+                        <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
+                        <div class="desc">{{$game->description}}</div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                        </div>
+                        <div class="box">
+                            <div class="price">{{$game->price}}</div>
+                            <a href="{{route('store.showCartProduct', $game->id)}}" type="button" class="btn">Comprar</a>
+                        </div>
                     </div>
-                    <div class="box">
-                        <div class="price">50$</div>
-                        <button class="btn">Buy now</button>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </section>
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('game_id')->constrained();
+            $table->double('price')->constrained();
             $table->timestamps();
         });
     }

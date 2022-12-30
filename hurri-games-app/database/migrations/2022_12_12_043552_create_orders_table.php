@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->enum('status', ['PEN', 'CON', 'CAN']); // PENDENTE, CONCLUÍDO, CANCELADO
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
