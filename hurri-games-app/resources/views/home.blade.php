@@ -10,7 +10,7 @@
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="...">
+                <img id="img-Home" src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>HurriGames - Uma tempestade de ofertas</h5>
                     <p>Some representative placeholder content for this Page Home.</p>

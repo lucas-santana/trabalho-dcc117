@@ -27,3 +27,7 @@ tbody tr:nth-child(2n-1) {
 td.rank {
     text-transform: capitalize;
 }
+
+#img-Home{
+    opacity: 0.85;
+}

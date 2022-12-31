@@ -54,6 +54,14 @@
                             </a>
                         </li>
                     @endcan
+                    @can('manage-category')
+                        <li class="list">
+                            <a href="{{route('promo.index')}}" class="nav-link">
+                                <i class='bx bxs-hot icon'></i>
+                                <span class="link">Cadastro/Efetivação de Promoções</span>
+                            </a>
+                        </li>
+                    @endcan
                     <li class="list">
                         <a href="{{route('receiveMessage')}}" class="nav-link">
                             <i class='bx bxs-bell icon'></i>

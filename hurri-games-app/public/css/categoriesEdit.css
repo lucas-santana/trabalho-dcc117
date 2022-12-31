@@ -155,3 +155,10 @@ form .but1:hover{
 form .but2:hover{
     background-color: rgb(233, 73, 73);
 }
+
+h3{
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    padding-left: 10px;
+}

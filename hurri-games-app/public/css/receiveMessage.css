@@ -37,7 +37,15 @@ input {
     left: -25px;
 }
 
+.rating{
+    padding-bottom: 15px;
+}
 
+h3{
+    font-size: 20px;
+    font-weight: 200;
+    font-family: "Poppins", sans-serif;
+}
 
 img {
     float: left;
@@ -197,6 +205,12 @@ button:hover {
     font-size: 10px;
 }
 
+.pseudo-right h1{
+    padding-left: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+
 .online {
     color: var(--verde);
 }
@@ -228,4 +242,8 @@ button:hover {
     content: " ";
     clear: both;
     height: 0;
+}
+
+li{
+    list-style-type: none;
 }

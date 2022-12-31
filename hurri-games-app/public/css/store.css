@@ -2,6 +2,22 @@
     display: block;
 }
 
+.pseudo-right{
+    width: 100%;
+    height: 100%;
+    padding: 20px 0px 0px 3px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.container-special{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
 .top-bar{
     width: 100%;
     height: 4rem;
@@ -23,7 +39,6 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .navibar{
     display: flex;

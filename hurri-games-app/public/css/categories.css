@@ -91,6 +91,9 @@
 
 .tabelaUsuarios {
     margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .listaUsuarios {
@@ -101,6 +104,16 @@
     border-radius: 10px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
 }
+
+.listaPromocoes {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+}
+
 
 .table {
     border-collapse: collapse;

@@ -41,18 +41,23 @@
                 <div class="title">Minecraft</div>
                 <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
                 <div class="desc">Jogo de Destruir Bloco</div>
+                <div class="desc">Tempo de Jogo: 12 Horas</div>
+                <div class="desc">Total de Conquistas: 12/56</div>
                 <div class="rating">
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-
+                <div class="box">
+                    <div class="price"></div>
+                    <a  class="btn" href="{{ route('rate') }}" type="button" >
+                        Avaliar Jogo
+                    </a>
+                </div>
             </div>
 
         </div>
     </section>
-
-
 
     <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
 @endsection
