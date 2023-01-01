@@ -8,12 +8,11 @@ server {
     server_name  example.com www.example.com;
 
     location / {
-        index  index.php index.html index.htm;
         try_files $uri $uri/ /index.php?$args; # changed for Laravel
     }
 
     # redirect server error pages to the static page /50x.html
-    #teste
+    #teste2
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   /html/;
