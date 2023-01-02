@@ -35,13 +35,16 @@
 }
 
 .container{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     background-color: #fff;
     position: relative;
-    max-width: 900px;
+
     width: 100%;
     border-radius: 6px;
     padding: 30px;
-    margin: 0 15px;
+    margin: 0 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -127,36 +130,4 @@ form .user-details .input-box{
     cursor: pointer;
 }
 
-.botoes{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
-}
 
-.but1{
-    background-color: rgb(6, 212, 6);
-}
-
-.but2{
-    background-color: rgb(231, 55, 55);
-}
-
-.button1{
-    padding: 10px;
-}
-
-.button2{
-    padding: 10px;
-}
-
-form button i{
-    margin: 0 3px;
-}
-
-form .but1:hover{
-    background-color: rgb(3, 172, 3);
-}
-
-form .but2:hover{
-    background-color: rgb(233, 73, 73);
-}

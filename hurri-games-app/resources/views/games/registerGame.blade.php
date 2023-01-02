@@ -96,6 +96,12 @@
                             <span class="details">Preço Padrão</span>
                             <input name="normal_price" type="text" placeholder="Digite o preço..." >
                         </div>
+
+                        <div class="input-box">
+                            <span>Imagem do Título</span>
+                            <label class="send-image" for="myfile">Escolher arquivo</label>
+                            <input type="file" id="myfile" name="myfile">
+                        </div>
                     </div>
                     <div class="botoes">
 

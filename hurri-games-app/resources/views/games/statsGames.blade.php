@@ -32,6 +32,7 @@
                             </select>
                         </div>
 
+
                         <div class="input-box">
                             <span class="details">Processador</span>
                             <select name="processor" >

@@ -38,11 +38,11 @@
                         <i class="ri-user-2-line card--icon--lg"></i>
                     </div>
                 </div>
-                <div class="card card-2">
+                <div class="card card-3">
                     <div class="card--data">
                         <div class="card--content">
-                            <h5 class="card--title">Desenvolvedores</h5>
-                            <h1>4</h1>
+                            <h5 class="card--title">Usuários ativos</h5>
+                            <h1>17</h1>
                         </div>
                         <i class="ri-user-line card--icon--lg"></i>
                     </div>

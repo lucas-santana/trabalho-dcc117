@@ -1,10 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Usuários')
+@section('title', 'Notificação')
 
 @push('css')
 
-    <link rel="stylesheet" href="{{asset('css/notification.css')}}">
 @endpush
 
 @section('body')
@@ -53,5 +52,4 @@
             </div>
         </div>
     </div>
-
 @endsection

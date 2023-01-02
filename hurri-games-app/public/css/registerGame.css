@@ -105,7 +105,6 @@ form .user-details .input-box{
     color: #707070;
 }
 
-
 .input-box input[type="date"]:valid{
     color: #333;
 }
@@ -175,3 +174,12 @@ form .but2:hover{
     flex-direction:row;
 }
 
+.send-image{
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    border: solid 2px #1ca4f3;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}

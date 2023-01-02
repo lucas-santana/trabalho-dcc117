@@ -8,7 +8,6 @@
 @endpush
 
 @section('body')
-
     <div class="pseudo-right">
         <div class="container-special">
             <div class="header">
@@ -62,7 +61,9 @@
                             </div>
                             <div class="box">
                                 <div class="price">{{$game->price}}</div>
+                                <a href="" type="button" class="btn"><i class="bx bx-plus"></i> Lista De Desejos</a>
                                 <a href="{{route('store.showCartProduct', $game->id)}}" type="button" class="btn">Comprar</a>
+
                             </div>
                         </div>
                     @endforeach
