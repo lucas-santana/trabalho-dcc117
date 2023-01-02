@@ -75,7 +75,7 @@
                                     <a class='bx bxs-edit-alt'
                                        href="{{ route('categories.edit', $category->id) }}"></a>
 
-                                    @include('components.btnDelete')
+                                    <x-btnDelete tipo="trash" classe="show_confirm"/>
                                 </form>
 
                             </td>

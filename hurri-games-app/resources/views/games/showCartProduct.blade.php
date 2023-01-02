@@ -14,7 +14,7 @@
             <h2 class="px-5 p-2">Adicionar no Carrinho</h2>
             <div class="cart">
                 <div class="col-md-12 col-lg-10 mx-auto">
-                    <form action="{{route('store.cart', $game->id)}}" method="POST">
+                    <form action="{{route('store.addCart', $game->id)}}" method="POST">
                         @csrf
                         <div class="cart-item">
                             <div class="row">

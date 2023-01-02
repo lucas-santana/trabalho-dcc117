@@ -46,9 +46,9 @@ class User extends Authenticatable
     ];
 
     //lista de desejo
-    public function games()
+    public function library()
     {
-        return $this->belongsToMany(Game::class);
+        return $this->belongsToMany(Game::class,'library')->withTimestamps();
     }
 
     public function notifications()

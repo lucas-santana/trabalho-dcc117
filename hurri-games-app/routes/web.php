@@ -31,11 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/store', [StoreController::class,'index'])->name('store.index');
     Route::get('/store/show/{game}', [StoreController::class,'showCartProduct'])->name('store.showCartProduct');
     Route::get('/store/cart/show', [StoreController::class,'showCart'])->name('store.showCart');
-    Route::post('/store/cart/{game}', [StoreController::class,'cart'])->name('store.cart');
+    Route::delete('/store/cart/delete/{orderItem}', [StoreController::class,'deleteCartProduct'])->name('store.deleteOrderItem');
+    Route::post('/store/cart/checkout', [StoreController::class,'checkout'])->name('store.checkout');
+    Route::post('/store/cart/{game}', [StoreController::class,'addCart'])->name('store.addCart');
 
-    Route::get('/cart', function(){
-        return view('games.cart');
-    })->name('cart');
+
 
     Route::get('/library', function () {
         return view('games.library');
