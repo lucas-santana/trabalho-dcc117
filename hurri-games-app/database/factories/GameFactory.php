@@ -18,7 +18,7 @@ class GameFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 2,
+            'dev_user_id' => 2,
             'name' => fake()->streetName(),
             'description' => fake()->text(100),
             'released_at' => fake()->date(),

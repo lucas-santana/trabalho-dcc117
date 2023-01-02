@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/store/cart/delete/{orderItem}', [StoreController::class,'deleteCartProduct'])->name('store.deleteOrderItem');
     Route::post('/store/cart/checkout', [StoreController::class,'checkout'])->name('store.checkout');
     Route::post('/store/cart/{game}', [StoreController::class,'addCart'])->name('store.addCart');
+    Route::post('/store/wish-list/{game}', [StoreController::class,'addWishList'])->name('store.addWishList');
 
 
 

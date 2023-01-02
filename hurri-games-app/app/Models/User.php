@@ -45,10 +45,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //lista de desejo
+
     public function library()
     {
         return $this->belongsToMany(Game::class,'library')->withTimestamps();
+    }
+
+    public function wishList(){
+        return $this->belongsToMany(Game::class,'wish_lists')->withTimestamps();
     }
 
     public function notifications()
@@ -59,6 +63,10 @@ class User extends Authenticatable
     public function developerData()
     {
         return $this->hasOne(DeveloperData::class);
+    }
+
+    public function isOnWhishList(){
+        //return $this->
     }
 
 }

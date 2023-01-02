@@ -72,7 +72,9 @@
                             </div>
                             <div class="box">
 
-                                <a href="" type="button" class="btn"><i class="bx bx-plus"></i> Lista De Desejos</a>
+                                @if(!$game->isOnWishList)
+                                    <button id="{{$game->id}}" data-url="{{route('store.addWishList', $game->id)}}" type="button" class="btn addWishList"><i class="bx bx-plus"></i> Lista De Desejos</button>
+                                @endif
                                 <a href="{{route('store.showCartProduct', $game->id)}}" type="button" class="btn">Comprar</a>
                             </div>
                         </div>
@@ -88,6 +90,11 @@
 
 
 
+
     <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+@endsection
+@section('scripts')
+    @include('scripts.addWishList')
+
 @endsection
 

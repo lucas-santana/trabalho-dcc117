@@ -26,41 +26,48 @@ class StoreController extends Controller
 
 
         //filtrar por categoria
-        if($request->has('search_categories')){
-            $games = Game::whereHas('categories',  function($query) use($request){
-                $query->where('category_id',$request->get('search_categories'));
+        if ($request->has('search_categories')) {
+            $games = Game::whereHas('categories', function ($query) use ($request) {
+                $query->where('category_id', $request->get('search_categories'));
             });
         }
 
-        if($request->has('search_price')){
-            if($request->get('search_price')=='10_20'){
-                $games->whereBetween('normal_price',[10,20]);
+        if ($request->has('search_price')) {
+            if ($request->get('search_price') == '10_20') {
+                $games->whereBetween('normal_price', [10, 20]);
             }
 
-            if($request->get('search_price')=='20_50'){
-                $games->whereBetween('normal_price',[20,50]);
+            if ($request->get('search_price') == '20_50') {
+                $games->whereBetween('normal_price', [20, 50]);
             }
 
-            if($request->get('search_price')=='50_100'){
-                $games->whereBetween('normal_price',[50,100]);
+            if ($request->get('search_price') == '50_100') {
+                $games->whereBetween('normal_price', [50, 100]);
             }
 
-            if($request->get('search_price')=='m100'){
-                $games->where('normal_price','>', 100);
+            if ($request->get('search_price') == 'm100') {
+                $games->where('normal_price', '>', 100);
             }
 
         }
 
-        if($request->has('search_name_game')){
-            $games->where('name','like', '%'.$request->get('search_name_game').'%');
+        if ($request->has('search_name_game')) {
+            $games->where('name', 'like', '%' . $request->get('search_name_game') . '%');
         }
 
         $games = $games->get();
 
+        //verificar, para cada jogo se já esta na lista de desejos
+        $userWishList = Auth::user()->wishList()->pluck('game_id')->toArray();
+        $games = $games->map(function ($g) use($userWishList) {
+            $g->isOnWishList = in_array($g->id,$userWishList);
+            return $g;
+        });
+
         $totalItensCarrinho = 0;
 
         $order = Order::where(['user_id' => Auth::id(), 'status' => 'PEN'])->first();
-        if($order){
+        if ($order) {
             $totalItensCarrinho = $order->orderItems()->get()->count();
         }
 
@@ -69,15 +76,16 @@ class StoreController extends Controller
         return view('games.store')
             ->with('categories', $categories)
             ->with('games', $games)
-            ->with('totalItensCarrinho',$totalItensCarrinho);
+            ->with('totalItensCarrinho', $totalItensCarrinho);
     }
 
     /*
      * Mostra detalhes do jogo antes de adicionar ao carrinho
      */
-    public function showCartProduct(Request $request, Game $game){
+    public function showCartProduct(Request $request, Game $game)
+    {
 
-        return view('games.showCartProduct')->with('game',$game);
+        return view('games.showCartProduct')->with('game', $game);
     }
 
     /*
@@ -109,7 +117,8 @@ class StoreController extends Controller
     /*
      * Mostrar o carrinho com todos os itens
      */
-    public function showCart(Request $request){
+    public function showCart(Request $request)
+    {
         $order = Order::where(['user_id' => Auth::id(), 'status' => 'PEN'])->first();
 
         if (!$order) {
@@ -129,7 +138,8 @@ class StoreController extends Controller
     /*
      * Exclui um item do carrinho
      */
-    public function deleteCartProduct(Request $request, OrderItem $orderItem){
+    public function deleteCartProduct(Request $request, OrderItem $orderItem)
+    {
         $orderItem->delete();
         return redirect()->route('store.showCart');
     }
@@ -142,7 +152,7 @@ class StoreController extends Controller
     {
         $order = Order::where(['user_id' => Auth::id(), 'status' => 'PEN'])->first();
 
-        if($order){
+        if ($order) {
             //alterar status do pedido
             $order->status = 'CON';//Concluído
             $order->save();
@@ -156,5 +166,11 @@ class StoreController extends Controller
         }
 
         return redirect()->route('store.index');
+    }
+
+    public function addWishList(Request $request, Game $game)
+    {
+        Auth::user()->wishList()->attach($game->id);
+        return response()->json(['success' => $game->name]);
     }
 }

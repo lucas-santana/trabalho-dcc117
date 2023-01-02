@@ -45,10 +45,9 @@ class Game extends Model
         'released_at' => 'date',
     ];
 
-    //lista de desejo
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
+
+    public function wishList(){
+        return $this->belongsToMany(Game::class,'wish_lists')->withTimestamps();
     }
 
     /*
@@ -56,7 +55,7 @@ class Game extends Model
      * usuario que cadastrou o jogo
      */
     public function developer(){
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'dev_user_id');
     }
 
     /*
