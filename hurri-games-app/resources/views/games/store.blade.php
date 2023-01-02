@@ -52,7 +52,7 @@
 
             <section class="sec">
                 <h1>Loja</h1>
-                Total: {{$games->count()}}
+                {{--Total: {{$games->count()}}--}}
                 <div class="products">
                     @foreach($games as $game)
                         <div class="card">
