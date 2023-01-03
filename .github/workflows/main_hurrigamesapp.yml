@@ -43,5 +43,5 @@ jobs:
         with:
           app-name: 'hurrigamesapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_595CEF77EBE8482CAFB9CFD0F7BBE072 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CB96CC1BC46D479190EDFCD53BB93054 }}
           package: .
