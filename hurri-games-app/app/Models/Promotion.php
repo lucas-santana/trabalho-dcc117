@@ -15,7 +15,15 @@ class Promotion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'starts_at',
-        'ends_at'
+        'ends_at',
+        'discount_rate',
+        'categories'
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

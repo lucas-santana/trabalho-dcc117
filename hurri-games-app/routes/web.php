@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\StoreController;
@@ -37,12 +38,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store/wish-list/{game}', [StoreController::class,'addWishList'])->name('store.addWishList');
 
 
-
     Route::get('/library', function () {
         return view('games.library');
     })->name('library');
 
     Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
+
+    Route::resource('promotions', PromotionController::class);
 
     /*------------------- USUARIO -------------------------------------------------*/
     Route::resource('users', UserController::class);
@@ -86,7 +88,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/users/notificar/{user}', [UserController::class, 'notifyForm'])->name('users.notifyForm');
     Route::post('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
-
 
 });
 Auth::routes();

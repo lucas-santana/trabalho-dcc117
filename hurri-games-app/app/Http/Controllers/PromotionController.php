@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePromotionRequest;
 use App\Http\Requests\UpdatePromotionRequest;
 use App\Models\Promotion;
+use Session;
 
 class PromotionController extends Controller
 {
@@ -15,7 +16,8 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        //
+        $promotions = Promotion::all();
+        return view('promo.index')->with('promotions', $promotions);
     }
 
     /**
@@ -25,7 +27,7 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        return view('promo.create');
     }
 
     /**
@@ -36,7 +38,19 @@ class PromotionController extends Controller
      */
     public function store(StorePromotionRequest $request)
     {
-        //
+
+        $dadosValidados = $request->validate([
+            'name' => 'required',
+            'discount_rate' => 'required',
+            'starts_at' => 'required',
+            'ends_at' => 'required'
+        ]);
+
+
+        Promotion::create($dadosValidados);
+        Session::flash('sucess', ['msg' => __('messages.sucesso_cadastro')]);
+
+        return redirect()->route('promo.index');
     }
 
     /**
@@ -81,6 +95,8 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+        $promotion->delete();
+        Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+        return redirect()->route('promo.index');
     }
 }

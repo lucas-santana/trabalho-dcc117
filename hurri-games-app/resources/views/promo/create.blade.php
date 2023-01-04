@@ -11,7 +11,7 @@
         <div class="container">
             <div class="title">Cadastrar Promoção</div>
             <div class="content">
-                <form action="" method="POST">
+                <form action="{{route('promotion.store')}}" method="POST">
                     @csrf
                     <div class="user-details">
                         <div class="input-box">
@@ -21,30 +21,27 @@
 
                         <div class="input-box">
                             <span class="details">Categorias Associadas</span>
-                            <select class="form-select" multiple aria-label="multiple select example">
-                                <option value="0">AVENTURA</option>
-                                <option value="1">FPS</option>
-                                <option value="2">RPG</option>
-                                <option value="3">MOBA</option>
+                            <select name="categories">
+                                <option value="Aventura">Aventura</option>
+                                <option value="Ação">Ação</option>
                             </select>
                         </div>
 
                         <div class="input-box">
                             <span class="details">Data de Ínicio</span>
-                            <input type="date">
+                            <input name="starts_at" type="date">
 
                         </div>
 
                         <div class="input-box">
                             <span class="details">Data do Fim</span>
-                            <input type="date">
+                            <input name="ends_at" type="date">
 
                         </div>
 
                         <div class="input-box">
                             <span class="details">Desconto que será aplicado nos jogos(%)</span>
-                            <input type="text" placeholder="Digite a taxa...">
-
+                            <input name="discount_rate" type="text" placeholder="Digite a taxa...">
                         </div>
                     </div>
 
@@ -61,7 +58,7 @@
                         </div>
 
                         <div class="button2">
-                            <button type="button" class="but2" onclick="window.location=''">
+                            <button type="button" class="but2" onclick="window.location='{{ route('promo.index') }}'">
                                 <span>Cancelar</span>
                                 <i class="uil uil-x"></i>
                             </button>

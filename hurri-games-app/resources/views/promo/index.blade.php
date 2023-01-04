@@ -27,17 +27,19 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                    @foreach($promotions as $promotion)
                         <tr>
-                            <td>1</td>
-                            <td>Promoção de Verão</td>
-                            <td>Desativada</td>
-                            <td>Ação/Aventura/FPS</td>
-                            <td>23/06/1989 : 23/07/1989</td>
+                            <td>{{$promotion->id}}</td>
+                            <td>{{$promotion->name}}</td>
+                            <td>Sim/Não</td>
+                            <td>{{$promotion->categories}}</td>
+                            <td>{{$promotion->starts_at}}:{{$promotion->ends_at}}</td>
                             <td>
                                 <i class="uil uil-trash"></i>
                                 <i class="uil uil-power"></i> <!--Inverte Status??-->
                             </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <a class="btnDefault" href="{{ route('promo.create') }}">

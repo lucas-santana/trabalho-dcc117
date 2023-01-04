@@ -35,6 +35,32 @@ namespace App\Models{
 }
 
 namespace App\Models{
+    /**
+     * App\Models\Promotion
+     *
+     * @property int $id
+     * @property string $name
+     * @property string $categories
+     * @property date $starts_at
+     * @property date $ends_at
+     * @property decimal $discount_rate
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @method static \Database\Factories\CategoryFactory factory(...$parameters)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  whereIsActive($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotion  whereUpdatedAt($value)
+     */
+    class Promotion extends \Eloquent {}
+}
+
+namespace App\Models{
 /**
  * App\Models\Deal
  *
