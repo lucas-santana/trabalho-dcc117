@@ -11,7 +11,7 @@
         <div class="container">
             <div class="title">Cadastrar Promoção</div>
             <div class="content">
-                <form action="{{route('promotion.store')}}" method="POST">
+                <form action="{{route('promotions.store')}}" method="POST">
                     @csrf
                     <div class="user-details">
                         <div class="input-box">
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="button2">
-                            <button type="button" class="but2" onclick="window.location='{{ route('promo.index') }}'">
+                            <button type="button" class="but2" onclick="window.location='{{ route('promotions.index') }}'">
                                 <span>Cancelar</span>
                                 <i class="uil uil-x"></i>
                             </button>

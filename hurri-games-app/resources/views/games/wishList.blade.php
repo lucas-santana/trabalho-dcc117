@@ -16,7 +16,7 @@
             <div class="products">
 
                 <div class="card">
-                    <div class="title">Minecraft <img id="sale" class="{{asset('img/promo.png')}}" src="img/vendas.png" alt=""></div>
+                    <div class="title">Minecraft <img id="sale" class="{{asset('img/promotions.png')}}" src="img/vendas.png" alt=""></div>
                     <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
                     <div class="desc">Jogo de Destruir Bloco</div>
                     <div class="rating">

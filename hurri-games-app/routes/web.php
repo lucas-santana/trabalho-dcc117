@@ -68,13 +68,6 @@ Route::middleware(['auth'])->group(function () {
         return view('games.rate');
     })->name('rate');
 
-    Route::get('/promo', function(){
-        return view('promo.index');
-    })->name('promo.index');
-
-    Route::get('/create', function(){
-        return view('promo.create');
-    })->name('promo.create');
 
     Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
     Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');

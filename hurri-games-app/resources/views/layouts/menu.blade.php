@@ -56,7 +56,7 @@
                     @endcan
                     @can('manage-category')
                         <li class="list">
-                            <a href="{{route('promo.index')}}" class="nav-link">
+                            <a href="{{route('promotions.index')}}" class="nav-link">
                                 <i class='bx bxs-hot icon'></i>
                                 <span class="link">Cadastro/Efetivação de Promoções</span>
                             </a>

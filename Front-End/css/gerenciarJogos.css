@@ -113,7 +113,7 @@ nav.open .sidebar{
     transition: all 0.5s ease;
     pointer-events: none;
     opacity: 0;
-} */
+}
 
 nav.open ~ .overlay{
     left: 260px;

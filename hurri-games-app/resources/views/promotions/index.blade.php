@@ -42,7 +42,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <a class="btnDefault" href="{{ route('promo.create') }}">
+                <a class="btnDefault" href="{{ route('promotions.create') }}">
                     <i class="uil uil-plus"></i>
                     <span>Cadastrar</span>&nbsp;
                 </a>

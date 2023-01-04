@@ -17,7 +17,8 @@ class PromotionController extends Controller
     public function index()
     {
         $promotions = Promotion::all();
-        return view('promo.index')->with('promotions', $promotions);
+
+        return view('promotions.index')->with('promotions', $promotions);
     }
 
     /**
@@ -27,7 +28,7 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        return view('promo.create');
+        return view('promotions.create');
     }
 
     /**
@@ -47,10 +48,11 @@ class PromotionController extends Controller
         ]);
 
 
+
         Promotion::create($dadosValidados);
         Session::flash('sucess', ['msg' => __('messages.sucesso_cadastro')]);
 
-        return redirect()->route('promo.index');
+        return redirect()->route('promotions.index');
     }
 
     /**
@@ -97,6 +99,6 @@ class PromotionController extends Controller
     {
         $promotion->delete();
         Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
-        return redirect()->route('promo.index');
+        return redirect()->route('promotions.index');
     }
 }

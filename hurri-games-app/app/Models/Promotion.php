@@ -22,8 +22,4 @@ class Promotion extends Model
         'categories'
     ];
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class);
-    }
 }
