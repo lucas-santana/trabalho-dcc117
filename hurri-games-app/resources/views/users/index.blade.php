@@ -100,7 +100,7 @@
 
                                     <a class='bx bxs-edit-alt' href="{{ route('users.edit', $user->id) }}"></a>
 
-                                    @include('components.btnDelete')
+                                    <x-btnDelete tipo="x" classe="show_confirm"/>
 
                                     <a class='bx bx-block' href="{{ route('users.banForm', $user->id) }}"></a>
                                     @can('send-notifications')
