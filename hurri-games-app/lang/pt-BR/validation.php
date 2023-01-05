@@ -195,6 +195,7 @@ return [
         'phone'     => 'telefone',
         'second'    => 'segundo',
         'sex'       => 'sexo',
+        'star'       => 'estrelas',
         'state'     => 'estado',
         'street'    => 'rua',
         'subject'   => 'assunto',

@@ -162,7 +162,7 @@ class StoreController extends Controller
 
             //add jogos a biblioteca do usuário
             $user = Auth::user();
-            $user->library()->sync($ids);
+            $user->library()->attach($ids);
         }
 
         return redirect()->route('store.index');

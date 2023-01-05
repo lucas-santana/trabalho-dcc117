@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('game_id')->constrained();
             $table->string('review');
-            $table->decimal('rate');
+            $table->integer('rate');
 
             $table->timestamps();
         });

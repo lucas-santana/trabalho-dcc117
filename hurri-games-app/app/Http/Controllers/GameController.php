@@ -25,18 +25,17 @@ class GameController extends Controller
      */
     public function index()
     {
-
         if(Auth::user()->is_admin){
             $games = Game::withSum('reviews as sumRate','rate')
-                ->withCount('reviews as totalReviews')->get();
+                ->withCount('reviews as totalReviews');
         }else{
             $games = Game::withSum('reviews as sumRate','rate')
                 ->withCount('reviews as totalReviews')
-                ->where('dev_user_id','=', Auth::id())->get();
+                ->where('dev_user_id','=', Auth::id());
         }
 
+        $games = $games->orderBy('id')->get();
 
-        //$gamesAvgReview = Game::
 
         $gamesTotal = $games->count();
         $gamesAvgPrice = $games->average('normal_price');

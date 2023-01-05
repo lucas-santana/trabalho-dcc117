@@ -32,7 +32,7 @@
                     @endcan
 
                     <li class="list">
-                        <a href="{{route('library')}}" class="nav-link">
+                        <a href="{{route('library.index')}}" class="nav-link">
                             <i class='bx bx-library icon'></i>
                             <span class="link">Biblioteca</span>
                         </a>

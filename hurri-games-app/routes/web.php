@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LibrayController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameController;
@@ -37,11 +38,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store/cart/{game}', [StoreController::class,'addCart'])->name('store.addCart');
     Route::post('/store/wish-list/{game}', [StoreController::class,'addWishList'])->name('store.addWishList');
 
-
-    Route::get('/library', function () {
-        return view('games.library');
-    })->name('library');
-
     Route::resource('categories', CategoryController::class)->middleware('can:manage-category');
 
     Route::resource('promotions', PromotionController::class);
@@ -64,11 +60,6 @@ Route::middleware(['auth'])->group(function () {
         return view('games.wishList');
     })->name('wishList');
 
-    Route::get('rate', function(){
-        return view('games.rate');
-    })->name('rate');
-
-
     Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
 
     Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');
@@ -87,6 +78,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/users/notificar/{user}', [UserController::class, 'notifyForm'])->name('users.notifyForm');
     Route::post('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
+
+
+    Route::get('/library', [LibrayController::class,'index'])->name('library.index');
+    Route::get('/library/game/review/{game}', [LibrayController::class,'reviewForm'])->name('library.reviewForm');
+    Route::post('/library/game/review/{game}', [LibrayController::class,'saveReview'])->name('library.saveReview');
+
+
 
 });
 Auth::routes();

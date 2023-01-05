@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Carbon; @endphp
 @extends('layouts.main')
 
 @section('title', 'Recebimento de Mensagens')
@@ -12,93 +13,66 @@
 
 @section('body')
     <div class="pseudo-right">
-        <h1>Dark Souls III</h1>
+        <h1>{{$game->name}}</h1>
         <div class="chat-history">
             <ul>
 
-                <li>
-                    <div class="message-data">
+                @foreach($game->reviews()->get() as $review)
+                    <li>
+                        <div class="message-data">
 
-                        <span class="message-data-time" >Eminem,</span>
+                            <span class="message-data-time">{{$review->user->name}}</span>
 
-                        <span class="message-data-time">10:12, Hoje</span>
-                    </div>
-                    <div class="message my-message">
-                        Joguinho maneiro...
-                    </div>
+                            <span
+                                class="message-data-time">{{Carbon::create($review->created_at)->format('d/m/y')}}</span>
 
-                </li>
+                            @for($i = (int)$review->rate;$i>0;$i--)
+                                <i class="bx bxs-star"></i>
+                            @endfor
+                        </div>
+                        <div class="message my-message">
+                            {{$review->review}}
+                        </div>
 
+                    </li>
+                @endforeach
 
-                <li>
-                    <div class="message-data">
-
-                        <span class="message-data-time" >Fabin_do_Pneu,</span>
-
-                        <span class="message-data-time">10:12, Hoje</span>
-                    </div>
-                    <div class="message my-message">
-                        Esse jogo é uma porra, vão se foder
-                    </div>
-                </li>
-
-                <li>
-                    <div class="message-data">
-
-                        <span class="message-data-time" >Zézão,</span>
-
-                        <span class="message-data-time">10:12, Hoje</span>
-                    </div>
-                    <div class="message my-message">
-                        Fabin_do_Pneu pistolou kkkkk
-                    </div>
-                </li>
-
-                <li>
-                    <div class="message-data">
-
-                        <span class="message-data-time" >Mariazinha,</span>
-
-                        <span class="message-data-time">10:12, Hoje</span>
-                    </div>
-                    <div class="message my-message">
-                        Só sei que nada sei...
-                    </div>
-                </li>
             </ul>
         </div>
         <div class="chat-message clearfix">
             <h3>Avaliação</h3>
+            <x-message/>
             <div class="stars">
 
-                <form action="">
-
-                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-
+                <form action="{{route('library.saveReview', $game->id)}}" method="POST">
+                    @csrf
+                    <input class="star star-5" id="star-5" type="radio" name="rate" value="5"/>
                     <label class="star star-5" for="star-5"></label>
 
-                    <input class="star star-4" id="star-4" type="radio" name="star"/>
+                    <input class="star star-4" id="star-4" type="radio" name="rate" value="4"/>
 
                     <label class="star star-4" for="star-4"></label>
 
-                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                    <input class="star star-3" id="star-3" type="radio" name="rate" value="3"/>
 
                     <label class="star star-3" for="star-3"></label>
 
-                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                    <input class="star star-2" id="star-2" type="radio" name="rate" value="2"/>
 
                     <label class="star star-2" for="star-2"></label>
 
-                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                    <input class="star star-1" id="star-1" type="radio" name="rate" value="1"/>
 
                     <label class="star star-1" for="star-1"></label>
 
+                    <label for="message-to-send">Mensagem</label>
+                    <textarea name="review" id="message-to-send" placeholder="Digite sua mensagem" rows="3"
+                              style="border: 1px solid black"></textarea>
+                    <button>Enviar</button>
                 </form>
 
-                <textarea name="message-to-send" id="message-to-send" placeholder ="Digite sua mensagem" rows="3"></textarea>
 
-            <button>Enviar</button>
-        </div>
+            </div>
 
-        <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
+            <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
 @endsection
