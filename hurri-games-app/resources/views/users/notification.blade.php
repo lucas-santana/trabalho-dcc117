@@ -3,7 +3,7 @@
 @section('title', 'Notificação')
 
 @push('css')
-
+    <link rel="stylesheet" href="{{asset('css/notification.css')}}">
 @endpush
 
 @section('body')
@@ -18,7 +18,7 @@
 
                         <span>Usuário a ser notificado: <strong>{{$user->name}}</strong></span>
 
-                        <span>ID do Usuário: {{$user->id}}</span> <!--Recuperar o ID do usuário-->
+                        {{--<span>ID do Usuário: {{$user->id}}</span> <!--Recuperar o ID do usuário-->--}}
 
                         {{--<span>Horário que será enviado: <input type="time"></span>--}}
 
@@ -33,19 +33,15 @@
                     </div>
 
                     <div class="botoes">
-                        <div class="button1">
                             <button type="submit" class="but1">
                                 <span>Enviar</span>
                                 <i class="uil uil-edit"></i>
                             </button>
-                        </div>
 
-                        <div class="button2">
                             <button class="but2" type="button" onclick="window.location='{{ route('users.index') }}'">
                                 <span>Cancelar</span>
                                 <i class="uil uil-x"></i>
                             </button>
-                        </div>
                     </div>
 
                 </form>

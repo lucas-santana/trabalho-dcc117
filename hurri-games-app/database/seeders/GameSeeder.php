@@ -16,7 +16,7 @@ class GameSeeder extends Seeder
     public function run()
     {
         Game::factory()
-            ->count(50)
+            ->count(20)
             ->create();
 
         $categories = Category::all();

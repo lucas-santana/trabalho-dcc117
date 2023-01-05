@@ -23,8 +23,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'asc')->get();
-        return view('users.index')->with('users', $users);
+        $users = User::withCount('library')->get();
+        $usersTotal = User::all()->count();
+        $usersActive =User::where('status','=',true)->count();
+        $usersDev = User::where('is_dev','=',true)->count();
+
+        return view('users.index')->with([
+            'users'=> $users,
+            'usersTotal'=> $usersTotal,
+            'usersActive'=> $usersActive,
+            'usersDev'=> $usersDev
+        ]);
     }
 
     /**
@@ -188,6 +197,9 @@ class UserController extends Controller
 
     public function registerDevForm(User $user)
     {
+        if(\Auth::user()->is_dev){
+            Session::flash('warning', ['msg' => "Notificação enviada com sucesso!"]);
+        }
         return view('users.registerDev')->with('user', $user);
     }
 
@@ -206,6 +218,6 @@ class UserController extends Controller
         $user->developerData()->save($developerData);
 
         Session::flash('success', ['msg' => 'Cadastro de desenvolvedor realizado!']);
-        return redirect()->route('users.index');
+        return redirect()->route('home');
     }
 }

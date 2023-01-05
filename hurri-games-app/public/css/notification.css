@@ -130,4 +130,18 @@ form .user-details .input-box{
     cursor: pointer;
 }
 
+.but1{
+    background-color: rgb(6, 212, 202);
+}
 
+.but2{
+    background-color: rgb(245, 96, 96);
+}
+
+form .but1:hover{
+    background-color: rgb(2, 134, 130);
+}
+
+form .but2:hover{
+    background-color: rgb(233, 73, 73);
+}

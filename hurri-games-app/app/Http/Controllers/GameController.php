@@ -28,7 +28,7 @@ class GameController extends Controller
         if(Auth::user()->is_admin){
             $games = Game::all();
         }else{
-            $games = Game::where('user_id','=', Auth::id())->get();
+            $games = Game::where('dev_user_id','=', Auth::id())->get();
         }
 
         return view('games.index')->with('games', $games);
@@ -109,7 +109,7 @@ class GameController extends Controller
 
         $game = $request->session()->get('game');
         $game->fill($dadosValidados);
-        $game->user_id = Auth::id();
+        $game->dev_user_id = Auth::id();
         $game->released_at = Carbon::now();
 
         $game->languages = json_encode($game->languages);

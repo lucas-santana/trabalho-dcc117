@@ -65,8 +65,4 @@ class User extends Authenticatable
         return $this->hasOne(DeveloperData::class);
     }
 
-    public function isOnWhishList(){
-        //return $this->
-    }
-
 }

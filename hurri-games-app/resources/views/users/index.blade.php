@@ -32,8 +32,8 @@
                 <div class="card card-1">
                     <div class="card--data">
                         <div class="card--content">
-                            <h5 class="card--title">Clientes</h5>
-                            <h1>25</h1>
+                            <h5 class="card--title">Usuários</h5>
+                            <h1>{{$usersTotal}}</h1>
                         </div>
                         <i class="ri-user-2-line card--icon--lg"></i>
                     </div>
@@ -42,29 +42,21 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Usuários ativos</h5>
-                            <h1>17</h1>
+                            <h1>{{$usersActive}}</h1>
                         </div>
-                        <i class="ri-user-line card--icon--lg"></i>
+                        <i class="ri-check-double-fill card--icon--lg"></i>
                     </div>
                 </div>
                 <div class="card card-3">
                     <div class="card--data">
                         <div class="card--content">
-                            <h5 class="card--title">Usuários ativos</h5>
-                            <h1>17</h1>
+                            <h5 class="card--title">Desenvolvedores</h5>
+                            <h1>{{$usersDev}}</h1>
                         </div>
-                        <i class="ri-check-double-fill card--icon--lg"></i>
+                        <i class="ri-user-line card--icon--lg"></i>
                     </div>
                 </div>
-                <div class="card card-4">
-                    <div class="card--data">
-                        <div class="card--content">
-                            <h5 class="card--title">Vendas Mês Atual</h5>
-                            <h1>15</h1>
-                        </div>
-                        <i class="ri-money-dollar-circle-line card--icon--lg"></i>
-                    </div>
-                </div>
+
             </div>
         </div>
 
@@ -91,8 +83,8 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->status?'Sim':'Não'}}</td>
-                            <td>1023</td>
-                            <td>{{$user->created_at->format('d/m/Y H:i:s')}}</td>
+                            <td style="text-align: center">{{$user->library_count*100}}</td>
+                            <td style="text-align: center">{{$user->created_at->format('d/m/Y')}}</td>
                             <td>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                     @csrf
