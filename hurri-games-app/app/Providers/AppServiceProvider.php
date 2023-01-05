@@ -25,5 +25,8 @@ class AppServiceProvider extends ServiceProvider
     {
         \Blade::component('components.message', 'message');
         \Blade::component('components.btnDelete', 'btnDelete');
+        \Blade::directive('money', function ($amount) {
+            return "<?php echo 'R$ ' . number_format($amount, 2,','); ?>";
+        });
     }
 }

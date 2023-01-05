@@ -70,10 +70,16 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
+
     Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');
 
     Route::get('/games/create-step-2', [GameController::class,'createStep2'])->name('games.createStep2');
     Route::post('/games/create-step-2', [GameController::class,'storeStep2'])->name('games.storeStep2');
+
+    Route::get('/games/edit-step-1/{game}', [GameController::class,'editStep1'])->name('games.editStep1');
+    Route::post('/games/edit-step-1/{game}', [GameController::class,'updateStep1'])->name('games.editStep1');
+
+    Route::delete('/games/{game}', [GameController::class,'destroy'])->name('games.destroy');
 
     Route::get('/receiveMessage', function () {
         return view('layouts.receiveMessage');

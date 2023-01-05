@@ -25,13 +25,31 @@ class GameController extends Controller
      */
     public function index()
     {
+
         if(Auth::user()->is_admin){
-            $games = Game::all();
+            $games = Game::withSum('reviews as sumRate','rate')
+                ->withCount('reviews as totalReviews')->get();
         }else{
-            $games = Game::where('dev_user_id','=', Auth::id())->get();
+            $games = Game::withSum('reviews as sumRate','rate')
+                ->withCount('reviews as totalReviews')
+                ->where('dev_user_id','=', Auth::id())->get();
         }
 
-        return view('games.index')->with('games', $games);
+
+        //$gamesAvgReview = Game::
+
+        $gamesTotal = $games->count();
+        $gamesAvgPrice = $games->average('normal_price');
+        $gamesAvgReview = $games->avg('sumRate');
+
+
+        return view('games.index')
+            ->with([
+                'games'=>$games,
+                'gamesTotal'=>$gamesTotal,
+                'gamesAvgPrice'=>$gamesAvgPrice,
+                'gamesAvgReview'=>$gamesAvgReview
+            ]);
     }
 
     /**
@@ -144,7 +162,7 @@ class GameController extends Controller
      * @param Game $game
      * @return Response
      */
-    public function edit(Game $game)
+    public function editStep1(Game $game)
     {
         //
     }
@@ -169,6 +187,10 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        $game->categories()->detach();//excluir da tabela intermediária category_game
+        $game->delete();//excluir o jogo em si
+
+        Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+        return redirect()->route('games.index');
     }
 }

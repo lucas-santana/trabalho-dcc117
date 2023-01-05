@@ -63,7 +63,7 @@
                             @foreach($game->categories()->get() as $ca)
                                 <strong>{{$ca->name}}&nbsp;&nbsp;</strong>
                             @endforeach
-                            <div class="price">R${{$game->normal_price}}</div>
+                            <div class="price">@money($game->normal_price)</div>
                             <div class="desc">{{$game->description}}</div>
                             <div class="rating">
                                 <i class="bx bxs-star"></i>

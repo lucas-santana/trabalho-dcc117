@@ -14,7 +14,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Total Jogos</h5>
-                            <h1>25</h1>
+                            <h1>{{$gamesTotal}}</h1>
                         </div>
                         <i class="ri-gamepad-line card--icon--lg"></i>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Custo Médio dos Jogos</h5>
-                            <h1>4</h1>
+                            <h1>@money($gamesAvgPrice)</h1>
                         </div>
                         <i class="ri-money-dollar-circle-fill card--icon--lg"></i>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Avaliação Média dos Jogos</h5>
-                            <h1>17</h1>
+                            <h1>{{number_format($gamesAvgReview,2)}}</h1>
                         </div>
                         <i class="ri-star-fill card--icon--lg"></i>
                     </div>
@@ -61,12 +61,20 @@
                             <tr>
                                 <td>{{$game->id}}</td>
                                 <td>{{$game->name}}</td>
-                                <td>{{$game->developer->name}}</td>
-                                <td>15</td>
-                                <td>{{$game->released_at->format('d/m/Y')}}</td>
+                                <td style="text-align: center;">{{$game->developer->name}}</td>
+                                <td style="text-align: center;">{{$game->totalReviews}}</td>
+                                <td style="text-align: center;">{{$game->released_at->format('d/m/Y')}}</td>
                                 <td>
-                                    <i class='bx bxs-edit-alt'></i>
-                                    <i class='bx bx-trash' ></i>
+                                    <form action="{{ route('games.destroy', $game->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <a class='bx bxs-edit-alt'
+                                           href="{{ route('games.editStep1', $game->id) }}"></a>
+
+                                        <x-btnDelete tipo="trash" classe="show_confirm"/>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach
