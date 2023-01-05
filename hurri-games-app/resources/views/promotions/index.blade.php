@@ -33,7 +33,7 @@
                             <td>{{$promotion->name}}</td>
                             <td>Sim/Não</td>
                             <td>
-                                @foreach($promotions->categories()->get() as $ca)
+                                @foreach($promotion->categories()->get() as $ca)
                                     <strong>{{$ca->name}}</strong>
                                 @endforeach
                             </td>

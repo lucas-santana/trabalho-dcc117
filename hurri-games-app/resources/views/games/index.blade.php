@@ -44,40 +44,41 @@
             <div class="listaUsuarios">
                 <h1>Jogos</h1>
                 <x-message/>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome do Jogo</th>
-                        <th>Nome Desenvolvedor</th>
-                        <th>Número de Avaliações</th>
-                        <th>Data de Entrada</th>
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($games as $game)
+                <div class="tabela-scroll">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{$game->id}}</td>
-                            <td>{{$game->name}}</td>
-                            <td>{{$game->developer->name}}</td>
-                            <td>15</td>
-                            <td>{{$game->released_at->format('d/m/Y')}}</td>
-                            <td>
-                                <i class='bx bxs-edit-alt'></i>
-                                <i class='bx bx-trash' ></i>
-                            </td>
+                            <th>ID</th>
+                            <th>Nome do Jogo</th>
+                            <th>Nome Desenvolvedor</th>
+                            <th>Número de Avaliações</th>
+                            <th>Data de Entrada</th>
+                            <th>Ações</th>
                         </tr>
-                    @endforeach
+                        </thead>
+                        <tbody>
+                        @foreach($games as $game)
+                            <tr>
+                                <td>{{$game->id}}</td>
+                                <td>{{$game->name}}</td>
+                                <td>{{$game->developer->name}}</td>
+                                <td>15</td>
+                                <td>{{$game->released_at->format('d/m/Y')}}</td>
+                                <td>
+                                    <i class='bx bxs-edit-alt'></i>
+                                    <i class='bx bx-trash' ></i>
+                                </td>
+                            </tr>
+                        @endforeach
 
-                    </tbody>
+                        </tbody>
+                    </table>
+                </div>
 
-                </table>
                 <a class="btnDefault" href="{{ route('games.createStep1') }}">
                     <i class="uil uil-plus"></i>
                     <span>Cadastrar Jogo</span>&nbsp;
                 </a>
-            </div>
 
         </section>
 
