@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePromotionRequest;
 use App\Http\Requests\UpdatePromotionRequest;
+use App\Models\Category;
 use App\Models\Promotion;
 use Session;
 
@@ -16,7 +17,7 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $promotions = Promotion::all();
+        $promotions = Promotion::orderBy('id','asc')->get();
 
         return view('promotions.index')->with('promotions', $promotions);
     }
@@ -28,7 +29,9 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        return view('promotions.create');
+        $categories = Category::all();
+
+        return view('promotions.create')->with('categories', $categories);
     }
 
     /**

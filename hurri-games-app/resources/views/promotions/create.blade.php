@@ -21,9 +21,10 @@
 
                         <div class="input-box">
                             <span class="details">Categorias Associadas</span>
-                            <select name="categories">
-                                <option value="Aventura">Aventura</option>
-                                <option value="Ação">Ação</option>
+                            <select name="categories" >
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 

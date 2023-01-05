@@ -32,11 +32,20 @@
                             <td>{{$promotion->id}}</td>
                             <td>{{$promotion->name}}</td>
                             <td>Sim/Não</td>
-                            <td>{{$promotion->categories}}</td>
+                            <td>
+                                @foreach($promotions->categories()->get() as $ca)
+                                    <strong>{{$ca->name}}</strong>
+                                @endforeach
+                            </td>
                             <td>{{$promotion->starts_at}}:{{$promotion->ends_at}}</td>
                             <td>
-                                <i class="uil uil-trash"></i>
-                                <i class="uil uil-power"></i> <!--Inverte Status??-->
+                                <form action="{{ route('promotions.destroy', $promotion->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <x-btnDelete tipo="trash" classe="show_confirm"/>
+                                    <i class="uil uil-power"></i> <!--Inverte Status??-->
+                                </form>
                             </td>
                         </tr>
                     @endforeach
