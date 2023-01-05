@@ -21,24 +21,30 @@
                             </a>
                         </li>
                     @endcan
-                    <li class="list">
-                        <a href="{{route('games.index')}}" class="nav-link">
-                            <i class='bx bxs-game icon'></i>
-                            <span class="link">Gerenciamento de Jogos</span>
-                        </a>
-                    </li>
+
+                    @can('manage-games')
+                        <li class="list">
+                            <a href="{{route('games.index')}}" class="nav-link">
+                                <i class='bx bxs-game icon'></i>
+                                <span class="link">Gerenciamento de Jogos</span>
+                            </a>
+                        </li>
+                    @endcan
+
                     <li class="list">
                         <a href="{{route('library')}}" class="nav-link">
                             <i class='bx bx-library icon'></i>
                             <span class="link">Biblioteca</span>
                         </a>
                     </li>
+
                     <li class="list">
                         <a href="{{route('store.index')}}" class="nav-link">
                             <i class='bx bxs-store icon'></i>
                             <span class="link">Loja e Promoções</span>
                         </a>
                     </li>
+
                     <li class="list">
                         <a href="{{route('wishList')}}" class="nav-link">
                             <i class='bx bxs-shopping-bag icon'></i>

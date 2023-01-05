@@ -21,7 +21,6 @@ return new class extends Migration
 
             /*$table->unsignedBigInteger('deal_id')->nullable();
             $table->foreign('deal_id')->references('id')->on('deals');*/
-            $table->foreignId('deal_id')->nullable()->constrained();
             //$table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('dev_user_id')->nullable();
             $table->foreign('dev_user_id')->references('id')->on('users');

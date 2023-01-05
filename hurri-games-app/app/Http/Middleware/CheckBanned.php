@@ -17,11 +17,10 @@ class CheckBanned
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check() && auth()->user()->banned_until && now()->lessThan(auth()->user()->banned_until)) {
-
-            auth()->logout();
             $message = __('messages.conta_suspensa');
-
-            return redirect()->route('login')->withMessage($message);
+            $banReason = auth()->user()->ban_reason;
+            auth()->logout();
+            return redirect()->route('login')->with(['message'=>$message,'ban_reason'=>"Motivo: ".$banReason]);
         }
 
         return $next($request);

@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Gate;
 use Session;
 
 class UserController extends Controller
@@ -178,11 +179,13 @@ class UserController extends Controller
 
     public function notifyForm(User $user)
     {
+        Gate::authorize('send-notifications', \Auth::user());
         return view('users.notification')->with('user', $user);
     }
 
     public function notify(Request $request, User $user)
     {
+        Gate::authorize('send-notifications', \Auth::user());
         $dadosValidados = $request->validate([
             'message' => 'required'
         ]);

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('developer_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->unique()->constrained();
             $table->string('company_name')->nullable();
             $table->string('branch')->nullable();
             $table->string('account')->nullable();

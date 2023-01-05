@@ -32,6 +32,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->is_admin;
         });
 
+        Gate::define('manage-games', function (User $user) {
+            return $user->is_admin ||  $user->is_dev;
+        });
+
         Gate::define('manage-category', function (User $user) {
             return $user->is_admin;
         });
