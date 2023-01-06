@@ -92,6 +92,11 @@
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
 }
 
+.tabela-scroll{
+    height: 370px;
+    overflow:auto;
+}
+
 .table {
     border-collapse: collapse;
     margin: 25px 0;

@@ -23,6 +23,11 @@
     margin-top: 15px;
 }
 
+.idiomas{
+    display: flex;
+    flex-direction:row;
+}
+
 .container header::before{
     border-radius: 8px;
     content: "";

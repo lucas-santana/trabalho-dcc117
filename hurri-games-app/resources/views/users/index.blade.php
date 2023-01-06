@@ -64,48 +64,50 @@
             <div class="listaUsuarios">
                 <h1>Usuários do Sistema</h1>
                 <x-message/>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Ativo</th>
-                        <th>Número de Pontos</th>
-                        <th>Data de Entrada</th>
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($users as $user)
+                <div class="tabela-scroll">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->status?'Sim':'Não'}}</td>
-                            <td style="text-align: center">{{$user->library_count*100}}</td>
-                            <td style="text-align: center">{{$user->created_at->format('d/m/Y')}}</td>
-                            <td>
-                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <a class='bx bxs-edit-alt' href="{{ route('users.edit', $user->id) }}"></a>
-
-                                    <x-btnDelete tipo="x" classe="show_confirm"/>
-
-                                    <a class='bx bx-block' href="{{ route('users.banForm', $user->id) }}"></a>
-                                    @can('send-notifications')
-                                        <a class='bx bx-message' href="{{ route('users.notifyForm', $user->id) }}"></a>
-                                    @endcan
-                                    <a class='bx bxs-user-circle' href="{{ route('users.viewDevData', $user->id) }}"></a>
-                                </form>
-
-                            </td>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Ativo</th>
+                            <th>Número de Pontos</th>
+                            <th>Data de Entrada</th>
+                            <th>Ações</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->status?'Sim':'Não'}}</td>
+                                <td style="text-align: center">{{$user->library_count*100}}</td>
+                                <td style="text-align: center">{{$user->created_at->format('d/m/Y')}}</td>
+                                <td>
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <a class='bx bxs-edit-alt' href="{{ route('users.edit', $user->id) }}"></a>
+
+                                        <x-btnDelete tipo="x" classe="show_confirm"/>
+
+                                        <a class='bx bx-block' href="{{ route('users.banForm', $user->id) }}"></a>
+                                        @can('send-notifications')
+                                            <a class='bx bx-message' href="{{ route('users.notifyForm', $user->id) }}"></a>
+                                        @endcan
+                                        <a class='bx bxs-user-circle' href="{{ route('users.viewDevData', $user->id) }}"></a>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </div>

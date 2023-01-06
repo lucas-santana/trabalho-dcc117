@@ -53,46 +53,49 @@
             <div class="listaUsuarios">
                 <h1>Categorias do Sistema</h1>
                 <x-message/>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Ativa</th>
-                        <th>Total de Jogos Associados</th>
-                        <th>Avaliação Média</th>
-
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($categories as $category)
+                <div class="tabela-scroll">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{$category->id}}</td>
-                            <td>{{$category->name}}</td>
-                            <td>{{$category->description}}</td>
-                            <td>{{$category->is_active?'Sim':'Não'}}</td>
-                            <td>{{$category->totalGames}}</td>
-                            <td>2.5</td>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Ativa</th>
+                            <th>Total de Jogos Associados</th>
+                            <th>Avaliação Média</th>
 
-                            <td>
-                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <a class='bx bxs-edit-alt'
-                                       href="{{ route('categories.edit', $category->id) }}"></a>
-
-                                    <x-btnDelete tipo="trash" classe="show_confirm"/>
-                                </form>
-
-                            </td>
+                            <th>Ações</th>
                         </tr>
-                    @endforeach
+                        </thead>
+                        <tbody>
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{$category->id}}</td>
+                                <td>{{$category->name}}</td>
+                                <td>{{$category->description}}</td>
+                                <td>{{$category->is_active?'Sim':'Não'}}</td>
+                                <td>{{$category->totalGames}}</td>
+                                <td>2.5</td>
 
-                    </tbody>
-                </table>
+                                <td>
+                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <a class='bx bxs-edit-alt'
+                                           href="{{ route('categories.edit', $category->id) }}"></a>
+
+                                        <x-btnDelete tipo="trash" classe="show_confirm"/>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+
                 <a class="btnDefault" href="{{ route('categories.create') }}">
                     <i class="uil uil-plus"></i>
                     <span>Cadastrar</span>&nbsp;

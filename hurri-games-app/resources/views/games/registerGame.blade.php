@@ -90,8 +90,37 @@
                                         <label>GER</label>
                                     </div>
                                 </div>
+
+                                <div class="pretty p-default p-curve">
+                                    <input name="languages[]" type="checkbox" value="FRA"
+                                        {{ (is_array(old('languages')) && in_array('GER', old('languages'))) ? ' checked' : '' }}
+                                    />
+                                    <div class="state">
+                                        <label>FRA</label>
+                                    </div>
+                                </div>
+
+                                <div class="pretty p-default p-curve">
+                                    <input name="languages[]" type="checkbox" value="FRA"
+                                        {{ (is_array(old('languages')) && in_array('GER', old('languages'))) ? ' checked' : '' }}
+                                    />
+                                    <div class="state">
+                                        <label>RUS</label>
+                                    </div>
+                                </div>
+
+                                <div class="pretty p-default p-curve">
+                                    <input name="languages[]" type="checkbox" value="FRA"
+                                        {{ (is_array(old('languages')) && in_array('GER', old('languages'))) ? ' checked' : '' }}
+                                    />
+                                    <div class="state">
+                                        <label>JAP</label>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
                         <div class="input-box">
                             <span class="details">Preço Padrão</span>
                             <input name="normal_price" type="text" placeholder="Digite o preço..." >

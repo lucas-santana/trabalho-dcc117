@@ -163,7 +163,7 @@ class GameController extends Controller
      */
     public function editStep1(Game $game)
     {
-        //
+        return view('games.editGames');
     }
 
     /**

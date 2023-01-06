@@ -151,6 +151,11 @@ tbody tr:hover {
     background: #f3f3f3;
 }
 
+.tabela-scroll{
+    height: 370px;
+    overflow:auto;
+}
+
 .table tbody tr.active {
     font-weight: bold;
     color: rgb(235, 150, 220);

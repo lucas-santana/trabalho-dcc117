@@ -61,9 +61,9 @@
                             <tr>
                                 <td>{{$game->id}}</td>
                                 <td>{{$game->name}}</td>
-                                <td style="text-align: center;">{{$game->developer->name}}</td>
-                                <td style="text-align: center;">{{$game->totalReviews}}</td>
-                                <td style="text-align: center;">{{$game->released_at->format('d/m/Y')}}</td>
+                                <td >{{$game->developer->name}}</td>
+                                <td >{{$game->totalReviews}}</td>
+                                <td >{{$game->released_at->format('d/m/Y')}}</td>
                                 <td>
                                     <form action="{{ route('games.destroy', $game->id) }}" method="POST">
                                         @csrf
@@ -78,7 +78,6 @@
                                 </td>
                             </tr>
                         @endforeach
-
                         </tbody>
                     </table>
                 </div>
