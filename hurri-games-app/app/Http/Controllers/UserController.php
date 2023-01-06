@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Session;
 
@@ -190,7 +191,11 @@ class UserController extends Controller
             'message' => 'required'
         ]);
 
-        $notification = new Notifications($dadosValidados);
+
+        $notification = new Notifications();
+        $notification->to_user_id = $user->id;
+        $notification->from_user_id = Auth::id();
+        $notification->message = $dadosValidados['message'];
 
         $user->notifications()->save($notification);
 
@@ -222,5 +227,11 @@ class UserController extends Controller
 
         Session::flash('success', ['msg' => 'Cadastro de desenvolvedor realizado!']);
         return redirect()->route('home');
+    }
+
+    public function listNotifications(){
+        $notificaoes = \Auth::user()->notifications()->get();
+
+        return view('users.notificationsList')->with(['notificaoes'=>$notificaoes]);
     }
 }

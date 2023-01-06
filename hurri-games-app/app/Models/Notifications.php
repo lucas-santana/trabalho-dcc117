@@ -17,4 +17,14 @@ class Notifications extends Model
     protected $fillable = [
         'message'
     ];
+
+    public function userFrom()
+    {
+        return $this->belongsTo(User::class,'from_user_id');
+    }
+
+    public function userTo()
+    {
+        return $this->belongsTo(User::class,'to_user_id');
+    }
 }

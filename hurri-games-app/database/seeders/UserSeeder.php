@@ -32,6 +32,19 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'name' => "Admin2",
+            'nick_name' => "admin2",
+            'birth_date' => '2000-01-01',
+            'status' => '1',
+            'email' => 'admin2@gmail.com',
+            'password' => Hash::make('12345678'),
+            'is_admin' => true,
+            'is_dev' => false,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('users')->insert([
             'name' => "Desenvolvedor",
             'nick_name' => "dev",
             'birth_date' => '2000-01-01',

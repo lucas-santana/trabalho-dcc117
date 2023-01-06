@@ -69,7 +69,7 @@
                         </li>
                     @endcan
                     <li class="list">
-                        <a href="{{route('receiveMessage')}}" class="nav-link">
+                        <a href="{{route('users.listNotifications')}}" class="nav-link">
                             <i class='bx bxs-bell icon'></i>
                             <span class="link">Notificações <i class='bx bxs-circle'></i></span>
                         </a>

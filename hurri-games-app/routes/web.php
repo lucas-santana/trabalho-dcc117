@@ -69,12 +69,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/games/{game}', [GameController::class,'destroy'])->name('games.destroy');
 
-    Route::get('/receiveMessage', function () {
-        return view('layouts.receiveMessage');
-    })->name('receiveMessage');
-
     Route::get('/users/notificar/{user}', [UserController::class, 'notifyForm'])->name('users.notifyForm');
     Route::post('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');
+    Route::get('/notificacoes', [UserController::class, 'listNotifications'])->name('users.listNotifications');
 
 
     Route::get('/library', [LibrayController::class,'index'])->name('library.index');
