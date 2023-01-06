@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreWishListRequest;
 use App\Http\Requests\UpdateWishListRequest;
+use App\Models\Game;
 use App\Models\WishList;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class WishListController extends Controller
 {
@@ -15,72 +18,17 @@ class WishListController extends Controller
      */
     public function index()
     {
-        //
+        $games = Auth::user()->wishList()->withAvg('reviews as avgReview','rate')->get();
+
+
+        return view('games.wishList')->with(['games'=>$games]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function destroy(Game $game)
     {
-        //
-    }
+        Auth::user()->wishList()->detach($game->id);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreWishListRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreWishListRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\WishList  $wishList
-     * @return \Illuminate\Http\Response
-     */
-    public function show(WishList $wishList)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\WishList  $wishList
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(WishList $wishList)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateWishListRequest  $request
-     * @param  \App\Models\WishList  $wishList
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateWishListRequest $request, WishList $wishList)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\WishList  $wishList
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(WishList $wishList)
-    {
-        //
+        Session::flash('success', ['msg' => "Jogo removido da lista de desejos com sucesso!"]);
+        return redirect()->route('wishlist.index');
     }
 }

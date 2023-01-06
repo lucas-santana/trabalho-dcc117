@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishListController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -56,10 +57,6 @@ Route::middleware(['auth'])->group(function () {
     /*------------------- JOGOS -------------------------------------------------*/
     Route::get('/games', [GameController::class,'index'])->name('games.index');
 
-    Route::get('wishList', function(){
-        return view('games.wishList');
-    })->name('wishList');
-
     Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
 
     Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');
@@ -83,6 +80,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/library', [LibrayController::class,'index'])->name('library.index');
     Route::get('/library/game/review/{game}', [LibrayController::class,'reviewForm'])->name('library.reviewForm');
     Route::post('/library/game/review/{game}', [LibrayController::class,'saveReview'])->name('library.saveReview');
+
+
+    Route::get('/wish-list', [WishListController::class,'index'])->name('wishlist.index');
+    Route::delete('/wish-list/{game}', [WishListController::class,'destroy'])->name('wishlist.destroy');
+
 
 
 

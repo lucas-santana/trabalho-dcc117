@@ -46,7 +46,7 @@
                     </li>
 
                     <li class="list">
-                        <a href="{{route('wishList')}}" class="nav-link">
+                        <a href="{{route('wishlist.index')}}" class="nav-link">
                             <i class='bx bxs-shopping-bag icon'></i>
                             <span class="link">Lista de Desejos</span>
                         </a>
