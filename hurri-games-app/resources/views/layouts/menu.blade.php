@@ -71,7 +71,7 @@
                     <li class="list">
                         <a href="{{route('users.listNotifications')}}" class="nav-link">
                             <i class='bx bxs-bell icon'></i>
-                            <span class="link">Notificações <i class='bx bxs-circle'></i></span>
+                            <span class="link">Notificações</span>
                         </a>
                     </li>
                     @can('developer-register')

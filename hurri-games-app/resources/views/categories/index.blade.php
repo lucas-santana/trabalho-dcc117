@@ -14,16 +14,25 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Total Categorias</h5>
-                            <h1>25</h1>
+                            <h1>{{$categoriesTotal}}</h1>
                         </div>
                         <i class="ri-file-list-line card--icon--lg"></i>
+                    </div>
+                </div>
+                <div class="card card-1">
+                    <div class="card--data">
+                        <div class="card--content">
+                            <h5 class="card--title">Categorias Ativas</h5>
+                            <h1>{{$categoriesActive}}</h1>
+                        </div>
+                        <i class="ri-check-double-fill card--icon--lg"></i>
                     </div>
                 </div>
                 <div class="card card-2">
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Categoria com mais jogos</h5>
-                            <h1>4</h1>
+                            <h1>{{$maxGames}}</h1>
                         </div>
                         <i class="ri-sort-asc card--icon--lg"></i>
                     </div>
@@ -64,7 +73,7 @@
                             <td>{{$category->name}}</td>
                             <td>{{$category->description}}</td>
                             <td>{{$category->is_active?'Sim':'Não'}}</td>
-                            <td>6</td>
+                            <td>{{$category->totalGames}}</td>
                             <td>2.5</td>
 
                             <td>

@@ -80,21 +80,40 @@
                         </div>
                     @endforeach
                 </div>
+
             </section>
+            <div class="pag-cont">
+                <div class="pagination">
+                    <ul class="pag-ul">
+                        <li class="link active" value="1" onclick="activeLink()">1</li>
+                        <li class="link" value="2" onclick="activeLink()">2</li>
+                        <li class="link" value="3" onclick="activeLink()">3</li>
+                        <li class="link" value="4" onclick="activeLink()">4</li>
+                        <li class="link" value="5" onclick="activeLink()">5</li>
+                    </ul>
+
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+        let link = document.getElementsByClassName("link")
 
+        let current_value = 1
 
-
-
-
-
+        function activeLink(){
+            for(l of link){
+                l.classList.remove("active")
+            }
+            event.target.classList.add("active")
+            current_value = event.target.value
+        }
+    </script>
 
     <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
 @endsection
 @section('scripts')
     @include('scripts.addWishList')
-
 @endsection
 
