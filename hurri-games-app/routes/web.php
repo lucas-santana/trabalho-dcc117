@@ -55,17 +55,17 @@ Route::middleware(['auth'])->group(function () {
     })->name('users.viewDevData');
 
     /*------------------- JOGOS -------------------------------------------------*/
+
     Route::get('/games', [GameController::class,'index'])->name('games.index');
 
     Route::get('/games/create-step-1', [GameController::class,'createStep1'])->name('games.createStep1');
-
     Route::post('/games/create-step-1', [GameController::class,'storeStep1'])->name('games.storeStep1');
 
     Route::get('/games/create-step-2', [GameController::class,'createStep2'])->name('games.createStep2');
     Route::post('/games/create-step-2', [GameController::class,'storeStep2'])->name('games.storeStep2');
 
-    Route::get('/games/edit-step-1/{game}', [GameController::class,'editStep1'])->name('games.editStep1');
-    Route::post('/games/edit-step-1/{game}', [GameController::class,'updateStep1'])->name('games.editStep1');
+    Route::get('/games/edit/{game}', [GameController::class,'edit'])->name('games.edit');
+    Route::put('/games/edit/{game}', [GameController::class,'update'])->name('games.update');
 
     Route::delete('/games/{game}', [GameController::class,'destroy'])->name('games.destroy');
 
@@ -78,12 +78,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/library/game/review/{game}', [LibrayController::class,'reviewForm'])->name('library.reviewForm');
     Route::post('/library/game/review/{game}', [LibrayController::class,'saveReview'])->name('library.saveReview');
 
-
     Route::get('/wish-list', [WishListController::class,'index'])->name('wishlist.index');
     Route::delete('/wish-list/{game}', [WishListController::class,'destroy'])->name('wishlist.destroy');
-
-
-
 
 });
 Auth::routes();

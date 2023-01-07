@@ -161,9 +161,11 @@ class GameController extends Controller
      * @param Game $game
      * @return Response
      */
-    public function editStep1(Game $game)
+    public function edit(Game $game)
     {
-        return view('games.editGames');
+        return view('games.editGames')->with([
+            'game' => $game,
+        ]);
     }
 
     /**
@@ -175,7 +177,31 @@ class GameController extends Controller
      */
     public function update(UpdateGameRequest $request, Game $game)
     {
-        //
+
+
+        $dadosValidados = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'languages' => 'required',
+            'normal_price' => 'required',
+            'operational_system' => 'required',
+            'processor' => 'required',
+            'graphics_card' => 'required',
+            'directx' => 'required',
+            'storage' => 'required',
+            'memory' => 'required',
+        ]);
+
+
+        $game->update($dadosValidados);
+
+        if(!$game->wasChanged()){
+            Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
+        }else{
+            Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
+        }
+
+        return redirect()->route('games.index');
     }
 
     /**

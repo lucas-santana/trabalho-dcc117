@@ -70,7 +70,7 @@
                                         @method('DELETE')
 
                                         <a class='bx bxs-edit-alt'
-                                           href="{{ route('games.editStep1', $game->id) }}"></a>
+                                           href="{{ route('games.edit', $game->id) }}"></a>
 
                                         <x-btnDelete tipo="trash" classe="show_confirm"/>
                                     </form>
