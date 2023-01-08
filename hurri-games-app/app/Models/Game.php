@@ -27,6 +27,7 @@ class Game extends Model
         'storage',
         'memory',
         'released_at',
+        'image'
     ];
 
     /**

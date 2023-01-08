@@ -18,7 +18,7 @@
                 @foreach($games as $game)
                     <div class="card">
                         <div class="title">{{$game->name}} <img id="sale" class="{{asset('img/promotions.png')}}" src="img/vendas.png" alt=""></div>
-                        <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
+                        <div class="img"><img src="{{asset("games_image/$game->image")}}" class="d-block w-100" alt="..."></div>
                         <div class="desc">{{$game->description}}</div>
                         <div class="rating">
                             @for($i = round($game->avgReview);$i>0;$i--)

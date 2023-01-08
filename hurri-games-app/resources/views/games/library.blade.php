@@ -44,7 +44,7 @@
                 @foreach($games as $game)
                     <div class="card">
                         <div class="title"> {{$game->name}}</div>
-                        <div class="img"><img src="{{asset('img/teste.jpg')}}" class="d-block w-100" alt="..."></div>
+                        <div class="img"><img src="{{asset("games_image/$game->image")}}" class="d-block w-100" alt="..."></div>
 
                         @foreach($game->categories()->get() as $ca)
                             <strong>{{$ca->name}}&nbsp;&nbsp;</strong>

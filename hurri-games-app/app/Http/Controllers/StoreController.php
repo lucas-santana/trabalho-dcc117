@@ -56,7 +56,7 @@ class StoreController extends Controller
             $games->where('name', 'like', '%' . $request->get('search_name_game') . '%');
         }
 
-        $games = $games->paginate(3);
+        $games = $games->orderBy('id','desc')->paginate(3);
 
         //verificar, para cada jogo se já esta na lista de desejos
         $userWishList = Auth::user()->wishList()->pluck('game_id')->toArray();

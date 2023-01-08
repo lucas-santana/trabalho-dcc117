@@ -79,14 +79,24 @@ class GameController extends Controller
             'description' => 'required',
             'categories' => 'required',
             'languages' => 'required',
-            'normal_price' => 'required'
+            'normal_price' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
+
+
 
         if (empty($request->session()->get('game'))) {
             $game = new Game();
 
         } else {
             $game = $request->session()->get('game');
+        }
+
+        if($request->has('image')){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('games_image'), $imageName);
+
+            $dadosValidados['image'] = $imageName;
         }
 
         $game->fill($dadosValidados);

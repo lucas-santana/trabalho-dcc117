@@ -14,7 +14,7 @@
             <div class="title">Dados Básicos</div>
             <x-message/>
             <div class="content">
-                <form action="{{route('games.storeStep1')}}" method="POST">
+                <form action="{{route('games.storeStep1')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="user-details">
                         <div class="input-box">
@@ -128,8 +128,8 @@
 
                         <div class="input-box">
                             <span>Imagem do Título</span>
-                            <label class="send-image" for="myfile">Escolher arquivo</label>
-                            <input type="file" id="myfile" name="myfile">
+                            <label class="send-image" for="image">Escolher arquivo</label>
+                            <input type="file" id="image" name="image">
                         </div>
                     </div>
                     <div class="botoes">
