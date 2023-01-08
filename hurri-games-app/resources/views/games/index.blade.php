@@ -44,7 +44,7 @@
             <div class="listaUsuarios">
                 <h1>Jogos</h1>
                 <x-message/>
-                <div class="tabela-scroll">
+                <div >
                     <table class="table">
                         <thead>
                         <tr>
@@ -80,12 +80,15 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{$games->links()}}
                 </div>
 
-                <a class="btnDefault" href="{{ route('games.createStep1') }}">
-                    <i class="uil uil-plus"></i>
-                    <span>Cadastrar Jogo</span>&nbsp;
-                </a>
+                @can('create-game')
+                    <a class="btnDefault" href="{{ route('games.createStep1') }}">
+                        <i class="uil uil-plus"></i>
+                        <span>Cadastrar Jogo</span>&nbsp;
+                    </a>
+            @endcan
 
         </section>
 

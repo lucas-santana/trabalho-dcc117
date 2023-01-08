@@ -85,6 +85,7 @@
 
                         </tbody>
                     </table>
+                    {{$categories->links()}}
                 </div>
 
                 <a class="btnDefault" href="{{ route('categories.create') }}">

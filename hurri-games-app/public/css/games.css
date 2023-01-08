@@ -6,7 +6,7 @@
     height: 100%;
     width: calc(100% - 300px);
     padding: 0 40px;
-    overflow-y: scroll;
+
     transition: .3s;
 }
 
@@ -94,7 +94,6 @@
 
 .tabela-scroll{
     height: 370px;
-    overflow:auto;
 }
 
 .table {
@@ -103,7 +102,6 @@
     font-size: 15px;
     min-width: 100%;
     border-radius: 5px 5px 0 0;
-    overflow: hidden;
 }
 
 .listaUsuarios h1 {

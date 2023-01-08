@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::withCount('library')->get();
+        $users = User::withCount('library')->paginate();
         $usersTotal = User::all()->count();
         $usersActive =User::where('status','=',true)->count();
         $usersDev = User::where('is_dev','=',true)->count();

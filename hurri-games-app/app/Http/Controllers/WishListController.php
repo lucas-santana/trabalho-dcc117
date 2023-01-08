@@ -18,7 +18,7 @@ class WishListController extends Controller
      */
     public function index()
     {
-        $games = Auth::user()->wishList()->withAvg('reviews as avgReview','rate')->get();
+        $games = Auth::user()->wishList()->withAvg('reviews as avgReview','rate')->paginate();
 
 
         return view('games.wishList')->with(['games'=>$games]);

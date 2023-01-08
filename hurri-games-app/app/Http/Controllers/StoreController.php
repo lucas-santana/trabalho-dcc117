@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Game;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,14 +56,20 @@ class StoreController extends Controller
             $games->where('name', 'like', '%' . $request->get('search_name_game') . '%');
         }
 
-        $games = $games->get();
+        $games = $games->paginate(3);
 
         //verificar, para cada jogo se já esta na lista de desejos
         $userWishList = Auth::user()->wishList()->pluck('game_id')->toArray();
-        $games = $games->map(function ($g) use($userWishList) {
+
+        $promotion = new Promotion();
+        $categories = new Category();
+
+       $games->map(function ($g) use($userWishList) {
             $g->isOnWishList = in_array($g->id,$userWishList);
             return $g;
         });
+
+
 
         $totalItensCarrinho = 0;
 

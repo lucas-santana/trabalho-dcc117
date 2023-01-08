@@ -18,12 +18,8 @@ class CategoryController extends Controller
     {
         $categoriesActive = Category::where('is_active','=',true)->count();
 
-        $categories = Category::orderBy('id', 'asc')->get();
-
+        $categories = Category::withCount('games as totalGames')->paginate();
         $categoriesTotal = $categories->count();
-
-        $categories = Category::withCount('games as totalGames')->get();
-
         $maxGames = $categories->max('totalGames');
 
         return view('categories.index')->with([

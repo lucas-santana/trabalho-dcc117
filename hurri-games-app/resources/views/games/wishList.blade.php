@@ -37,6 +37,7 @@
 
             </div>
         </section>
+        {{$games->links()}}
     </div>
 
 

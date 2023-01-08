@@ -69,9 +69,12 @@
                     </div>
                 @endforeach
 
+
+
             </div>
         </section>
-        <div class="pag-cont">
+        {{$games->links()}}
+        {{--<div class="pag-cont">
             <div class="pagination">
                 <ul class="pag-ul">
                     <li class="link active" value="1" onclick="activeLink()">1</li>
@@ -82,7 +85,7 @@
                 </ul>
 
             </div>
-        </div>
+        </div>--}}
     </div>
 
     <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>

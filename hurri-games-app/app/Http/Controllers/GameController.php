@@ -35,7 +35,7 @@ class GameController extends Controller
                 ->where('dev_user_id','=', Auth::id());
         }
 
-        $games = $games->orderBy('id')->get();
+        $games = $games->orderBy('id')->paginate();
 
 
         $gamesTotal = $games->count();

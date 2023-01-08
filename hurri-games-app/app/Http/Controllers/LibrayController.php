@@ -25,7 +25,7 @@ class LibrayController extends Controller
         if ($request->has('search_name_game')) {
             $games->where('name', 'like', '%' . $request->get('search_name_game') . '%');
         }
-        $games = $games->orderBy('id')->get();
+        $games = $games->orderBy('id')->paginate(3);
 
 
         return view('games.library')->with(['categories' => Category::all(), 'games' => $games]);
