@@ -30,12 +30,12 @@
 
                         <div class="input-box">
                             <span class="details">Descrição</span>
-                            <textarea name="ban_reason" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$game->description}}</textarea>
+                            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$game->description}}</textarea>
                         </div>
 
                         <div class="input-box">
                             <span class="details">Preço Padrão</span>
-                            <input name="nick_name" type="text" placeholder="" value="{{$game->normal_price}}"/>
+                            <input name="normal_price" type="text" placeholder="" value="{{$game->normal_price}}"/>
                         </div>
 
                         <div id="language" class="input-box">

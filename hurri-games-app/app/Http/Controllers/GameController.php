@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+
 class GameController extends Controller
 {
     /**
@@ -58,7 +59,6 @@ class GameController extends Controller
      */
     public function createStep1(Request $request)
     {
-
         $categories = Category::all();
         //$game = $request->session()->get('game');
         $request->session()->forget('game');
@@ -178,7 +178,6 @@ class GameController extends Controller
     public function update(UpdateGameRequest $request, Game $game)
     {
 
-
         $dadosValidados = $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -192,12 +191,13 @@ class GameController extends Controller
             'memory' => 'required',
         ]);
 
-
+        $dadosValidados["languages"] = json_encode($dadosValidados["languages"]);
         $game->update($dadosValidados);
 
         if(!$game->wasChanged()){
             Session::flash('warning', ['msg' => __('messages.sem_modificacao')]);
         }else{
+//            dd($game->getChanges());
             Session::flash('success', ['msg' => __('messages.sucesso_atualizacao')]);
         }
 

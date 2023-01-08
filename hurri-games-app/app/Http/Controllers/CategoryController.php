@@ -123,8 +123,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
-        return redirect()->route('categories.index');
+        if(!$category->games()->exists()){
+            $category->delete();
+            Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+            return redirect()->route('categories.index');
+        }else{
+            Session::flash('warning', ['msg' => 'Não foi possível remover, pois a categoria possui jogos!']);
+            return redirect()->route('categories.index');
+        }
+
+
     }
 }

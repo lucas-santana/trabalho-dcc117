@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
         return view('home');
-    });
+    })->name('home');
 
     Route::get('/home', function () {
         return view('home');
@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/games/edit/{game}', [GameController::class,'edit'])->name('games.edit');
     Route::put('/games/edit/{game}', [GameController::class,'update'])->name('games.update');
 
-    Route::delete('/games/{game}', [GameController::class,'destroy'])->name('games.destroy');
+    Route::delete('/games/destroy/{game}', [GameController::class,'destroy'])->name('games.destroy');
 
     Route::get('/users/notificar/{user}', [UserController::class, 'notifyForm'])->name('users.notifyForm');
     Route::post('/users/notificar/{user}', [UserController::class, 'notify'])->name('users.notify');

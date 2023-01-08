@@ -19,7 +19,6 @@ class Promotion extends Model
         'starts_at',
         'ends_at',
         'discount_rate',
-        'categories'
     ];
 
     public function categories(){

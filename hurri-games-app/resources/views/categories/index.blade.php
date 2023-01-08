@@ -37,15 +37,6 @@
                         <i class="ri-sort-asc card--icon--lg"></i>
                     </div>
                 </div>
-                <div class="card card-3">
-                    <div class="card--data">
-                        <div class="card--content">
-                            <h5 class="card--title">Categoria favorita</h5>
-                            <h1>17</h1>
-                        </div>
-                        <i class="ri-star-fill card--icon--lg"></i>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -62,7 +53,7 @@
                             <th>Descrição</th>
                             <th>Ativa</th>
                             <th>Total de Jogos Associados</th>
-                            <th>Avaliação Média</th>
+
 
                             <th>Ações</th>
                         </tr>
@@ -75,7 +66,7 @@
                                 <td>{{$category->description}}</td>
                                 <td>{{$category->is_active?'Sim':'Não'}}</td>
                                 <td>{{$category->totalGames}}</td>
-                                <td>2.5</td>
+
 
                                 <td>
                                     <form action="{{ route('categories.destroy', $category->id) }}" method="POST">

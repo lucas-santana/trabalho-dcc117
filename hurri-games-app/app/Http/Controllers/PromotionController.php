@@ -42,7 +42,6 @@ class PromotionController extends Controller
      */
     public function store(StorePromotionRequest $request)
     {
-
         $dadosValidados = $request->validate([
             'name' => 'required',
             'discount_rate' => 'required',
@@ -51,8 +50,14 @@ class PromotionController extends Controller
         ]);
 
 
+        $promotion = Promotion::create($dadosValidados);
 
-        Promotion::create($dadosValidados);
+        $category = Category::find($request->get('categories'));
+
+        $category->promotion()->associate($promotion);
+
+        $category->save();
+
         Session::flash('sucess', ['msg' => __('messages.sucesso_cadastro')]);
 
         return redirect()->route('promotions.index');
@@ -100,6 +105,14 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
+        $categories = $promotion->categories()->get();
+
+        $categories->map(function($c){
+            $c->promotion_id = null;
+            $c->save();
+        });
+//        $category->promotion()->associate($promotion);
+
         $promotion->delete();
         Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
         return redirect()->route('promotions.index');

@@ -23,7 +23,7 @@ class GameFactory extends Factory
             'description' => fake()->text(100),
             'released_at' => fake()->date(),
             'normal_price' => fake()->randomNumber(2),
-            'languages' => json_encode(fake()->randomElements(['PT-BR','ENG-USA','SPA','GERM'],2)),
+            'languages' => json_encode(fake()->randomElements(['PT-BR','ENG-USA','SPA','GER'],2)),
             'operational_system' => fake()->randomElement(['Windows 7','Windows 8', 'Windows 10', 'Windows 11']),
             'processor' => fake()->randomElement(['Intel Core I7','Intel Core I5', 'Intel Core I3', 'Intel Dual Core']),
             'graphics_card' => fake()->randomElement(['RTX 3050','RTX 3090', 'GTX 1650', 'RTX 360 TI']),
