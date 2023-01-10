@@ -7,6 +7,8 @@ use App\Models\Game;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Promotion;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,8 +66,26 @@ class StoreController extends Controller
         $promotion = new Promotion();
         $categories = new Category();
 
-       $games->map(function ($g) use($userWishList) {
+       $games->map(function (Game $g) use($userWishList) {
             $g->isOnWishList = in_array($g->id,$userWishList);
+            $categories = $g->categories()->get();
+            $categories->map(function(Category $category) use ($g){
+
+
+                if($category->promotion()->get()->count()>0){
+
+                    $now = new DateTime();
+                    $start = new DateTime(Carbon::parse( $category->promotion->starts_at)->format('Y-m-d'));
+                    $end = new DateTime(Carbon::parse( $category->promotion->ends_at)->format('Y-m-d'));
+                    $check = $now->getTimestamp() >= $start->getTimestamp() && $now->getTimestamp() <= $end->getTimestamp();
+
+                    if($check){
+                        $g->promotional_price  = $g->normal_price*(1-($category->promotion->discount_rate/100));
+                    }
+
+                }
+            });
+
             return $g;
         });
 

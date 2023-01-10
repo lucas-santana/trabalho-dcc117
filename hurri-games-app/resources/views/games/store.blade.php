@@ -64,6 +64,9 @@
                                 <strong>{{$ca->name}}&nbsp;&nbsp;</strong>
                             @endforeach
                             <div class="price">@money($game->normal_price)</div>
+                            @if($game->promotional_price)
+                                <div class="promotional_price">Promoção: @money($game->promotional_price)</div>
+                            @endif
                             <div class="desc">{{$game->description}}</div>
                             <div class="rating">
                                 <i class="bx bxs-star"></i>

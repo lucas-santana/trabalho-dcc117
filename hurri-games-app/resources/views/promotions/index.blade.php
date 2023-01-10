@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Carbon; @endphp
 @extends('layouts.main')
 
 @section('title', 'Categorias')
@@ -22,7 +23,8 @@
                         <th>Nome</th> <!--Promoção de Inverno, Promoção Deu a Louca no Gerente Promoção Jogos do Ano, Promoção de Verão, Promoção Olimpiadas 2026, etc...-->
                         <th>Ativa</th>
                         <th>Categorias Associadas</th>
-                        <th>Data Início/Data Fim</th>
+                        <th>Data Início</th>
+                        <th>Data Fim</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
@@ -37,7 +39,8 @@
                                     <strong>{{$ca->name}}</strong>
                                 @endforeach
                             </td>
-                            <td>{{$promotion->starts_at}}:{{$promotion->ends_at}}</td>
+                            <td>{{Carbon::create($promotion->starts_at)->format('d/m/y')}}</td>
+                            <td>{{Carbon::create($promotion->ends_at)->format('d/m/y')}}</td>
                             <td>
                                 <form action="{{ route('promotions.destroy', $promotion->id) }}" method="POST">
                                     @csrf

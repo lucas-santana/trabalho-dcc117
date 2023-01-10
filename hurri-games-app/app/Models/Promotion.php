@@ -21,6 +21,11 @@ class Promotion extends Model
         'discount_rate',
     ];
 
+    protected $dates = [
+        'starts_at',
+        'ends_at'
+    ];
+
     public function categories(){
         return $this->hasMany(Category::class);
     }

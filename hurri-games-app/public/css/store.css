@@ -212,6 +212,12 @@ h1{
     font-weight: bold;
 }
 
+.promotional_price{
+    color: #f86161;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .products .card .box .btn{
     font-size: 13px;
     color: #61a8f8;
