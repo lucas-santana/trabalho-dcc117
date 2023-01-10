@@ -36,7 +36,7 @@
                     </div>
                 </form>
 
-                <div class="img"><img src="{{asset('img/geralt.jpg')}}" alt=""></div>
+                <div class="img"><img src="{{asset('img/ghost.jpg')}}" alt=""></div>
 {{--                <i class="user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</i>--}}
                 <i class="user-name">{{\Illuminate\Support\Facades\Auth::user()->nick_name}}</i>
             </nav>

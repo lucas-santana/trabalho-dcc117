@@ -19,7 +19,7 @@ td, th {
 tbody th {
     background-color: #2ea879;
 }
-tbody tr:nth-child(2n-1) {
+tbody tr:nth-child(all) {
     background-color: #f5f5f5;
     transition: all .125s ease-in-out;
 }
