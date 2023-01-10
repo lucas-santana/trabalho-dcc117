@@ -19,12 +19,12 @@
                         <div class="cart-item">
                             <div class="row">
                                 <div class="col-md-7 center-item">
-                                    <img src="{{asset('img/cod.jpg')}}" alt="">
-                                    <h5>{{$game->name}}( {{$game->normal_price}} )</h5>
+                                    <img src="{{asset("games_image/$game->image")}}" alt="">
+                                    <h5>{{$game->name}}( @money($game->normal_price) )</h5>
                                 </div>
 
                                 <div class="col-md-5 center-item">
-                                    <h5>R$ <span id="phone-total">{{$game->normal_price}}</span> </h5>
+                                    <h5>R$ <span id="phone-total">@money($game->normal_price)</span> </h5>
                                     <i class='bx bx-x icon'></i>
                                 </div>
                             </div>

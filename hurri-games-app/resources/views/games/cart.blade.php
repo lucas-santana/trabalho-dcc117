@@ -20,12 +20,12 @@
                             <div class="cart-item">
                                 <div class="row">
                                     <div class="col-md-7 center-item">
-                                        <img src="{{asset('img/cod.jpg')}}" alt="">
+                                        <img src="{{asset("games_image/{$orderItem->game->image}")}}" alt="">
                                         <h5>{{$orderItem->game->name}}( {{$orderItem->game->normal_price}} )</h5>
                                     </div>
 
                                     <div class="col-md-5 center-item">
-                                        <h5>R$ <span id="phone-total">{{$orderItem->game->normal_price}}</span> </h5>
+                                        <h5>R$ <span id="phone-total">@money($orderItem->game->normal_price)</span> </h5>
                                         <form action="{{route('store.deleteOrderItem', $orderItem->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <div class="col-6 status">
-                                    <h5>R$<span id="sub-total">{{$orderItems->sum('price')}}</span></h5>
+                                    <h5>R$<span id="sub-total">@money($orderItems->sum('price'))</span></h5>
                                 </div>
 
                             </div>

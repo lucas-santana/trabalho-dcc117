@@ -207,6 +207,8 @@ return [
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
         'current_password' => 'senha atual',
+        'normal_price'=>"Preço Padrão",
+        'image'=>"Imagem do Título"
     ],
 
 ];
