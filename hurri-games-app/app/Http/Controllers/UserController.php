@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DeveloperData;
 use App\Models\Notifications;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Session;
 
@@ -89,8 +91,23 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+
+        DB::transaction(function() use ($user){
+            $user->library()->detach();
+            $user->wishList()->detach();
+            $user->notifications()->delete();
+            $user->developerData()->delete();
+            $user->orders()->get()->map(function(Order $order){
+                $order->orderItems()->delete();
+            });
+            $user->orders()->delete();
+
+            $user->deleteOrFail();
+            Session::flash('success', ['msg' => __('messages.sucesso_exclusao')]);
+
+
+        });
+
         return redirect()->route('users.index');
     }
 
