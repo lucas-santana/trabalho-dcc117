@@ -36,17 +36,17 @@
                     <tbody>
                     <tr>
                         <td class="rank">1</td>
-                        <td class="userName">_MadarinhaXD_</td>
+                        <td class="userName">User</td>
                         <td class="points">1020 <img src="{{asset('img/moedinhas.png')}}" alt=""></td>
                     </tr>
                     <tr>
                         <td class="rank">2</td>
-                        <td class="userName">Ackerman_666</td>
+                        <td class="userName">Geralt-Rivia</td>
                         <td class="points">830 <img src="{{asset('img/moedinhas.png')}}" alt=""></td>
                     </tr>
                     <tr>
                         <td class="rank">3</td>
-                        <td class="userName">Sujiru_Ki_Mimame</td>
+                        <td class="userName">Nathan_Drake</td>
                         <td class="points">440 <img src="{{asset('img/moedinhas.png')}}" alt=""></td>
                     </tr>
                     </tbody>
